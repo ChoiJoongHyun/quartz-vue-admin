@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeViewController {
 
-    @GetMapping
+    @GetMapping(value = { "" })
     public String index () {
         return "_index.html";
         //return "dist/index.html";

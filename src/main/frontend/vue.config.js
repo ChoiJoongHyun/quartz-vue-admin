@@ -18,8 +18,8 @@ module.exports = {
         proxy: {
             '^/': {
                 target: 'http://localhost:8090',
-                ws: true,
-                changeOrigin: true
+                ws: false,
+                //changeOrigin: true
             }
         }
     }
