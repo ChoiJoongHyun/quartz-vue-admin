@@ -49,8 +49,8 @@ public class QuartzFiredTriggers implements Serializable {
     private String jobGroup;
 
     @Column(name = "IS_NONCONCURRENT")
-    private String isNonconcurrent;
+    private Boolean isNonconcurrent;
 
     @Column(name = "REQUESTS_RECOVERY")
-    private String requestsRecovery;
+    private Boolean requestsRecovery;
 }

@@ -4,6 +4,7 @@
 package com.quartz.admin.domain;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
+@EqualsAndHashCode(of = {"schedulerName", "triggerGroup"})
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Embeddable
