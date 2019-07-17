@@ -16,7 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Embeddable
-public class PausedTriggerGrpsId implements Serializable {
+public class PausedTriggerGroupId implements Serializable {
 
     @Column(name = "SCHED_NAME")
     private String schedulerName;
@@ -24,7 +24,7 @@ public class PausedTriggerGrpsId implements Serializable {
     @Column(name = "TRIGGER_GROUP")
     private String triggerGroup;
 
-    public PausedTriggerGrpsId(String schedulerName, String triggerGroup) {
+    public PausedTriggerGroupId(String schedulerName, String triggerGroup) {
         this.schedulerName = schedulerName;
         this.triggerGroup = triggerGroup;
     }

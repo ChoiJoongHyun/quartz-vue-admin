@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Getter
 @Entity
 @Table(name = "QRTZ_PAUSED_TRIGGER_GRPS")
-public class QuartzPausedTriggerGrps implements Serializable {
+public class QuartzPausedTriggerGroup implements Serializable {
 
     @EmbeddedId
-    private PausedTriggerGrpsId id;
+    private PausedTriggerGroupId id;
 }

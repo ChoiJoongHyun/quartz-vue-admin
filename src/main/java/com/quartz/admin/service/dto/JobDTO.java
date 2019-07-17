@@ -22,7 +22,7 @@ public class JobDTO {
     private String description;
     private String jobClassName;
     private Boolean isDurable;
-    private Boolean isNonconcurrent;
+    private Boolean isNonConcurrent;
     private Boolean isUpdateData;
     private Boolean requestsRecovery;
     private String jobData;
@@ -33,7 +33,7 @@ public class JobDTO {
                 .description(jobDetails.getDescription())
                 .jobClassName(jobDetails.getJobClassName())
                 .isDurable(jobDetails.getIsDurable())
-                .isNonconcurrent(jobDetails.getIsNonconcurrent())
+                .isNonConcurrent(jobDetails.getIsNonConcurrent())
                 .isUpdateData(jobDetails.getIsUpdateData())
                 .requestsRecovery(jobDetails.getRequestsRecovery())
                 .jobData(jobDetails.getJobData())

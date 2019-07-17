@@ -31,7 +31,7 @@ public class QuartzJobDetails implements Serializable {
     private Boolean isDurable;
 
     @Column(name = "IS_NONCONCURRENT")
-    private Boolean isNonconcurrent;
+    private Boolean isNonConcurrent;
 
     @Column(name = "IS_UPDATE_DATA")
     private Boolean isUpdateData;

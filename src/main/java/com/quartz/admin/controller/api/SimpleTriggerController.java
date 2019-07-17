@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RequiredArgsConstructor
-
 @RestController
 @RequestMapping("/api/simple/triggers")
 public class SimpleTriggerController {

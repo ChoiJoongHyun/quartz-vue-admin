@@ -34,7 +34,7 @@ public class QuartzFiredTriggers implements Serializable {
     private Long firedTime;
 
     @Column(name = "SCHED_TIME")
-    private Long schedTime;
+    private Long schedulerTime;
 
     @Column(name = "PRIORITY")
     private Long priority;
@@ -49,7 +49,7 @@ public class QuartzFiredTriggers implements Serializable {
     private String jobGroup;
 
     @Column(name = "IS_NONCONCURRENT")
-    private Boolean isNonconcurrent;
+    private Boolean isNonConcurrent;
 
     @Column(name = "REQUESTS_RECOVERY")
     private Boolean requestsRecovery;
