@@ -113,6 +113,14 @@
       }
     },
 
+    watch:{
+      $route (to, from){
+        if(from.name ==='DashboardView') {
+          this.repeatOff();
+        }
+      }
+    },
+
     methods: {
 
       repeatOn() {
@@ -159,10 +167,6 @@
     margin-left: 10px;
     margin-bottom: 10px;
     display: flex;
-  }
-  .el-row {
-    margin-bottom: 20px;
-
   }
 
 </style>
