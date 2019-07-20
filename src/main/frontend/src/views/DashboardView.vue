@@ -24,55 +24,61 @@
                    icon="el-icon-refresh"
                    circle
                    size="mini"
-                   @click="generateData()"></el-button>
+                   @click="setFiredTriggerList()"></el-button>
       </div>
     </div>
 
-    <el-table size="mini" :data="tableData" style="width: 100%">
+    <el-table size="mini" :data="firedTriggerList" style="width: 100%">
 
-      <el-table-column prop="id.schedulerName" label="schedulerName">
+      <el-table-column prop="id.schedulerName" label="SchedulerName">
       </el-table-column>
 
-      <el-table-column prop="id.entryId" label="entryId">
+      <el-table-column prop="id.entryId" label="EntryId">
       </el-table-column>
 
-      <el-table-column prop="triggerName" label="triggerName">
+      <el-table-column prop="triggerName" label="TriggerName">
       </el-table-column>
 
-      <el-table-column prop="triggerGroup" label="triggerGroup">
+      <el-table-column prop="triggerGroup" label="TriggerGroup">
       </el-table-column>
 
-      <el-table-column prop="instanceName" label="instanceName">
+      <el-table-column prop="instanceName" label="InstanceName">
       </el-table-column>
 
-      <el-table-column label="firedTime">
+      <el-table-column label="FiredTime">
         <template slot-scope="scope">
           {{ scope.row.firedTime | dateformatByLong }}
         </template>
       </el-table-column>
 
-      <el-table-column label="schedulerTime">
+      <el-table-column label="SchedulerTime">
         <template slot-scope="scope">
           {{ scope.row.schedulerTime | dateformatByLong }}
         </template>
       </el-table-column>
 
-      <el-table-column prop="priority" label="priority">
+      <el-table-column prop="priority" label="Priority" width="70">
       </el-table-column>
 
-      <el-table-column prop="state" label="state">
+      <el-table-column prop="state" label="State">
       </el-table-column>
 
-      <el-table-column prop="jobName" label="jobName">
+      <el-table-column prop="jobName" label="JobName">
       </el-table-column>
 
-      <el-table-column prop="jobGroup" label="jobGroup">
+      <el-table-column prop="jobGroup" label="JobGroup">
       </el-table-column>
 
-      <el-table-column prop="isNonConcurrent" label="isNonConcurrent">
+      <el-table-column label="NonConcurrent">
+        <template slot-scope="scope">
+          {{ scope.row.isNonConcurrent }}
+        </template>
       </el-table-column>
 
-      <el-table-column prop="requestsRecovery" label="requestsRecovery">
+      <el-table-column label="RequestsRecovery">
+        <template slot-scope="scope">
+          {{ scope.row.requestsRecovery }}
+        </template>
       </el-table-column>
 
     </el-table>
@@ -87,7 +93,7 @@
 
     data() {
       return {
-        /* tableData example data
+        /* firedTriggerList example data
         [{
           "id": {
             "schedulerName": "scheduler-name-01",
@@ -106,7 +112,7 @@
           "requestsRecovery": false
         }]
         */
-        tableData: [],
+        firedTriggerList: [],
         refreshDateTime: null,
         repeat: false,
         intervalFnc: null
@@ -126,7 +132,7 @@
       repeatOn() {
         this.repeat = true;
         this.intervalFnc = setInterval(() => {
-          this.generateData();
+          this.setFiredTriggerList();
         }, 3000);
       },
 
@@ -135,17 +141,12 @@
         clearInterval(this.intervalFnc);
       },
 
-      setTableData() {
+      setFiredTriggerList() {
         FiredTriggerAdapter.getFiredTriggerList().then((res) => {
-          this.tableData = res;
+          this.refreshDateTime = new Date();
+          this.firedTriggerList = res;
         });
       },
-
-      generateData() {
-        this.refreshDateTime = new Date();
-        this.setTableData();
-      }
-
     },
 
     components : {
@@ -157,7 +158,7 @@
     },
 
     created() {
-      this.generateData();
+      this.setFiredTriggerList();
     }
   }
 </script>

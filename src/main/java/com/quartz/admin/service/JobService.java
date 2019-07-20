@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.service;
 
+import com.quartz.admin.domain.JobId;
 import com.quartz.admin.domain.QuartzJobDetails;
 import com.quartz.admin.repository.JobDetailRepository;
 import com.quartz.admin.service.dto.JobDTO;
@@ -22,5 +23,9 @@ public class JobService {
     public List<JobDTO> findAll() {
         List<QuartzJobDetails> jobDetails = jobDetailRepository.findAll();
         return JobDTO.from(jobDetails);
+    }
+
+    public void deleteJob(JobId id) {
+        //TODO
     }
 }

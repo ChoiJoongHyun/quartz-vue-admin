@@ -3,11 +3,13 @@
  */
 package com.quartz.admin.domain;
 
+import com.quartz.admin.util.BlobConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Blob;
 
 @NoArgsConstructor
 @Getter
@@ -56,7 +58,7 @@ public class QuartzTriggers implements Serializable {
     private Long misfireInstr;
 
     @Column(name = "JOB_DATA")
-    private String jobData;
+    private Blob jobData;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumns({
@@ -65,4 +67,12 @@ public class QuartzTriggers implements Serializable {
             @JoinColumn(name = "JOB_GROUP", referencedColumnName = "JOB_GROUP", insertable = false, updatable = false),
     })
     private QuartzJobDetails jobDetails;
+
+    public String getStrJobData() {
+        if(this.jobData == null) {
+            return null;
+        }
+
+        return BlobConverter.toString(this.jobData);
+    }
 }

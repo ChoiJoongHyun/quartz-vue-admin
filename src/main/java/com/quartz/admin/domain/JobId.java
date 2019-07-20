@@ -27,9 +27,9 @@ public class JobId implements Serializable {
     @Column(name = "JOB_GROUP")
     private String jobGroup;
 
-    public JobId(String schedulerName, String jobName, String jobGroup) {
+    public JobId(String schedulerName, String jobGroup, String jobName) {
         this.schedulerName = schedulerName;
-        this.jobName = jobName;
         this.jobGroup = jobGroup;
+        this.jobName = jobName;
     }
 }

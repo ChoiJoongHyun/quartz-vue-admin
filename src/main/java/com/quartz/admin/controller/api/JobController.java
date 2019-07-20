@@ -3,12 +3,11 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.domain.JobId;
 import com.quartz.admin.service.JobService;
 import com.quartz.admin.service.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +19,15 @@ public class JobController {
     private final JobService jobService;
 
     @GetMapping
-    public List<JobDTO> jobList() {
+    public List<JobDTO> getJobList() {
+        return this.jobService.findAll();
+    }
+
+    @DeleteMapping("/scheduler-names/{schedulerName}/job-groups/{jobGroup}/job-names/{jobName}")
+    public List<JobDTO> deleteJob(@PathVariable String schedulerName,
+                          @PathVariable String jobGroup,
+                          @PathVariable String jobName) {
+        jobService.deleteJob(new JobId(schedulerName, jobGroup, jobName));
         return this.jobService.findAll();
     }
 }

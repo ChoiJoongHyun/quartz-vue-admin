@@ -5,6 +5,7 @@ import DefaultRouterView from './DefaultRouterView';
 import DashboardView from '../views/DashboardView';
 import CronTriggerView from '../views/CronTriggerView';
 import SimpleTriggerView from '../views/SimpleTriggerView';
+import JobView from '../views/JobView';
 
 Vue.use(Router);
 
@@ -16,6 +17,16 @@ const router = new Router({
       component: DashboardView,
       meta: {
         title: "DashBoard",
+        icon: "el-icon-s-data"
+      }
+    }
+    ,
+    {
+      path: "/jobs",
+      name: "JobView",
+      component: JobView,
+      meta: {
+        title: "Quartz JOB",
         icon: "el-icon-s-data"
       }
     }

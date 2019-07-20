@@ -51,7 +51,7 @@ public class TriggerDTO {
                 .endTime(triggers.getEndTime())
                 .calendarName(triggers.getCalendarName())
                 .misfireInstr(triggers.getMisfireInstr())
-                .jobData(triggers.getJobData())
+                .jobData(triggers.getStrJobData())
                 .jobDetail(JobDTO.from(triggers.getJobDetails()))
                 .build();
     }

@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class TriggerFilter {
-
+    private String schedulerName;
     private String jobGroup;
+    private String jobName;
 }
