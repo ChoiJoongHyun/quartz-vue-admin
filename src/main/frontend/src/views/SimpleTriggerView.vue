@@ -1,10 +1,16 @@
 <template>
-  <span>SimpleTriggerView!</span>
+  <SimpleTriggerList></SimpleTriggerList>
 </template>
 
 <script>
+  import SimpleTriggerList from '../components/SimpleTriggerList';
+
   export default {
-    name: "SimpleTriggerView"
+    name: "SimpleTriggerView",
+
+    components: {
+      SimpleTriggerList
+    }
   }
 </script>
 

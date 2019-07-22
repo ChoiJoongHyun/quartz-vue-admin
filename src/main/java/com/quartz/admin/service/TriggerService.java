@@ -22,6 +22,10 @@ public class TriggerService {
 
     private final TriggerRepository triggerRepository;
 
+    public List<TriggerDTO> findAll() {
+        return TriggerDTO.from(this.triggerRepository.findAll());
+    }
+
     public List<TriggerDTO> findByFilter(TriggerFilter filter) {
         if(StringUtils.isEmpty(filter.getJobGroup())) {
             return TriggerDTO.from(this.triggerRepository.findAll());

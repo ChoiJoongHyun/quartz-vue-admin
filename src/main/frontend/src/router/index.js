@@ -3,8 +3,11 @@ import Router from 'vue-router';
 
 import DefaultRouterView from './DefaultRouterView';
 import DashboardView from '../views/DashboardView';
+import AllTriggerView from '../views/AllTriggerView';
 import CronTriggerView from '../views/CronTriggerView';
 import SimpleTriggerView from '../views/SimpleTriggerView';
+import BlobTriggerView from '../views/BlobTriggerView';
+import SimpropTriggerView from '../views/SimpropTriggerView';
 import JobView from '../views/JobView';
 
 Vue.use(Router);
@@ -41,6 +44,15 @@ const router = new Router({
       },
       children: [
         {
+          path: "/triggers",
+          name: "AllTriggerView",
+          component: AllTriggerView,
+          meta: {
+            title: "AllTrigger"
+          }
+        }
+        ,
+        {
           path: "/cron/triggers",
           name: "CronTriggerView",
           component: CronTriggerView,
@@ -57,6 +69,24 @@ const router = new Router({
             title: "SimpleTrigger"
           }
         }
+        /*,
+        {
+          path: "/simprop/triggers",
+          name: "SimpropTriggerView",
+          component: SimpropTriggerView,
+          meta: {
+            title: "SimpropTrigger"
+          }
+        }
+        ,
+        {
+          path: "/blob/triggers",
+          name: "BlobTriggerView",
+          component: BlobTriggerView,
+          meta: {
+            title: "BlobTrigger"
+          }
+        }*/
       ]
     }
     ,

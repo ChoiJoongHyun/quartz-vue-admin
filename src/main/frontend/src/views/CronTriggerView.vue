@@ -1,10 +1,16 @@
 <template>
-  <span>CronTriggerView!</span>
+  <CronTriggerList></CronTriggerList>
 </template>
 
 <script>
+  import CronTriggerList from '../components/CronTriggerList';
+
   export default {
-    name: "CronTriggerView"
+    name: "CronTriggerView",
+
+    components: {
+      CronTriggerList
+    }
   }
 </script>
 
