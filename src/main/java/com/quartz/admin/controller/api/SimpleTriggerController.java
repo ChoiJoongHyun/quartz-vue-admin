@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.SimpleTriggerService;
 import com.quartz.admin.service.dto.SimpleTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/simple/triggers")
+@RequestMapping(ApiPath.SimpleTriggers.ROOT)
 public class SimpleTriggerController {
 
     private final SimpleTriggerService simpleTriggerService;

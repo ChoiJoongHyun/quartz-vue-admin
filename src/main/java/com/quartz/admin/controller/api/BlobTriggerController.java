@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.BlobTriggerService;
 import com.quartz.admin.service.dto.BlobTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/blob/triggers")
+@RequestMapping(ApiPath.BlobTriggers.ROOT)
 public class BlobTriggerController {
 
     private final BlobTriggerService blobTriggerService;

@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.SimpropTriggerService;
 import com.quartz.admin.service.dto.SimpropTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/simprop/triggers")
+@RequestMapping(ApiPath.SimpropTriggers.ROOT)
 public class SimpropTriggerController {
 
     private final SimpropTriggerService simpropTriggerService;

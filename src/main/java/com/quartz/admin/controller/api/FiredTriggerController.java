@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.FiredTriggerService;
 import com.quartz.admin.service.dto.FiredTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/fired/triggers")
+@RequestMapping(ApiPath.FiredTriggers.ROOT)
 public class FiredTriggerController {
 
     private final FiredTriggerService firedTriggerService;

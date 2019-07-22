@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.CalendarService;
 import com.quartz.admin.service.dto.CalendarDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/calendars")
+@RequestMapping(ApiPath.Calendars.ROOT)
 public class CalendarController {
 
     public final CalendarService calendarService;

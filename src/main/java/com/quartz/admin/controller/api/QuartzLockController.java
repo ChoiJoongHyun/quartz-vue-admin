@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.domain.LockId;
 import com.quartz.admin.service.QuartzLockService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/locks")
+@RequestMapping(ApiPath.Locks.ROOT)
 public class QuartzLockController {
 
     private final QuartzLockService quartzLockService;

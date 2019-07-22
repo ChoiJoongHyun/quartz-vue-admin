@@ -4,6 +4,7 @@
 package com.quartz.admin.controller.api;
 
 import com.quartz.admin.controller.api.request.CronTriggerFilter;
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.CronTriggerService;
 import com.quartz.admin.service.dto.CronTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/cron/triggers")
+@RequestMapping(ApiPath.CronTriggers.ROOT)
 public class CronTriggerController {
 
     private final CronTriggerService cronTriggerService;
@@ -24,10 +25,5 @@ public class CronTriggerController {
     @GetMapping
     public List<CronTriggerDTO> cronTriggerList(@Valid CronTriggerFilter request) {
         return this.cronTriggerService.findByFilter(request);
-    }
-
-    @GetMapping("/group")
-    public List<String> jobGroup() {
-        return this.cronTriggerService.findJobGroups();
     }
 }

@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.domain.PausedTriggerGroupId;
 import com.quartz.admin.service.PausedTriggerGroupService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/paused-trigger-groups")
+@RequestMapping(ApiPath.PausedTriggerGroups.ROOT)
 public class PausedTriggerGroupController {
 
     private final PausedTriggerGroupService pausedTriggerGroupService;

@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.domain.JobId;
 import com.quartz.admin.service.JobService;
 import com.quartz.admin.service.dto.JobDTO;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/jobs")
+@RequestMapping(ApiPath.Jobs.ROOT)
 public class JobController {
 
     private final JobService jobService;
@@ -23,10 +24,10 @@ public class JobController {
         return this.jobService.findAll();
     }
 
-    @DeleteMapping("/scheduler-names/{schedulerName}/job-groups/{jobGroup}/job-names/{jobName}")
+    @DeleteMapping(ApiPath.JOB_ID)
     public List<JobDTO> deleteJob(@PathVariable String schedulerName,
-                          @PathVariable String jobGroup,
-                          @PathVariable String jobName) {
+                                  @PathVariable String jobGroup,
+                                  @PathVariable String jobName) {
         jobService.deleteJob(new JobId(schedulerName, jobGroup, jobName));
         return this.jobService.findAll();
     }

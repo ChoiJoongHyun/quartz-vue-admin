@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.SchedulerStateService;
 import com.quartz.admin.service.dto.SchedulerStateDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/scheduler-state")
+@RequestMapping(ApiPath.SchedulerState.ROOT)
 public class SchedulerStateController {
 
     private final SchedulerStateService schedulerStateService;
