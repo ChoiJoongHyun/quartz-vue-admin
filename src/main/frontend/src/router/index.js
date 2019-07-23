@@ -89,7 +89,7 @@ const router = new Router({
         }*/
       ]
     }
-    ,
+    /*,
     {
       path: "/dashboard",
       name: "DashboardView",
@@ -98,7 +98,7 @@ const router = new Router({
         title: "DashBoard",
         icon: "el-icon-s-data"
       }
-    }
+    }*/
     ,
     {
       path: "/**",

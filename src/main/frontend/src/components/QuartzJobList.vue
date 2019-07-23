@@ -2,6 +2,7 @@
   <div>
     <el-table :data="jobList"
               stripe
+              size="mini"
               style="width: 100%">
 
       <el-table-column type="expand">
@@ -21,13 +22,13 @@
 
       </el-table-column>
 
-      <el-table-column prop="id.schedulerName" label="SchedulerName">
+      <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
       </el-table-column>
 
-      <el-table-column prop="id.jobName" label="JobName">
+      <el-table-column prop="id.jobName" label="JobName" sortable>
       </el-table-column>
 
-      <el-table-column prop="id.jobGroup" label="JobGroup">
+      <el-table-column prop="id.jobGroup" label="JobGroup" sortable>
       </el-table-column>
 
       <el-table-column label="Durable" width="80">
@@ -54,6 +55,27 @@
         </template>
       </el-table-column>
 
+      <el-table-column label="Add SimpleTrigger" width="150">
+        <template slot-scope="scope">
+          <el-button type="primary"
+                     icon="el-icon-plus"
+                     size="mini"
+                     @click="addSimpleTrigger(scope.row)">ADD
+          </el-button>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Detail" width="70">
+        <template slot-scope="scope">
+          <el-button type="primary"
+                     icon="el-icon-edit"
+                     size="mini"
+                     circle
+                     @click="detailJob(scope.row)"
+          ></el-button>
+        </template>
+      </el-table-column>
+
       <el-table-column label="Delete" width="70">
         <template slot-scope="scope">
           <el-button type="danger"
@@ -65,11 +87,28 @@
       </el-table-column>
 
     </el-table>
+
+    <template>
+      <el-dialog title="Detail" :visible.sync="detailDialogVisible"
+                 width="35%"
+                 align="left"
+                 :before-close="handleClose">
+
+        <QuartzJobDetail v-if="detailDialogVisible"
+                         :job-id="selectedJobId"
+                         @submit="submitDetailForm"
+                         @cancel-form="cancelDetailForm"></QuartzJobDetail>
+
+      </el-dialog>
+    </template>
   </div>
+
+
 </template>
 
 <script>
   import TriggerList from '../components/TriggerList';
+  import QuartzJobDetail from '../components/QuartzJobDetail';
 
   import JobAdapter from '../adapter/jobAdapter';
 
@@ -95,6 +134,8 @@
           }]
         * */
         jobList: [],
+        selectedJobId: {},
+        detailDialogVisible: false
       }
     },
 
@@ -109,6 +150,30 @@
         JobAdapter.deleteJob(row.id.schedulerName, row.id.jobGroup, row.id.jobName).then((res) => {
           this.jobList = res;
         });
+      },
+
+      addSimpleTrigger(row) {
+        alert("add");
+      },
+
+      detailJob(row) {
+        this.selectedJobId = row.id;
+        this.detailDialogVisible = true;
+      },
+
+      cancelDetailForm() {
+        this.selectedJobId = {};
+        this.detailDialogVisible = false;
+      },
+
+      submitDetailForm() {
+        this.selectedJobId = {};
+        this.detailDialogVisible = false;
+        this.setJobList();
+      },
+
+      handleClose(done) {
+        done();
       }
     },
 
@@ -117,7 +182,7 @@
     },
 
     components: {
-      TriggerList
+      TriggerList, QuartzJobDetail
     }
   }
 </script>
