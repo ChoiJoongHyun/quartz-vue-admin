@@ -35,70 +35,24 @@ const router = new Router({
     }
     ,
     {
-      path: "/",
-      name: "CronTriggerDefaultRouterView",
-      component: DefaultRouterView,
+      path: "/cron/triggers",
+      name: "CronTriggerView",
+      component: CronTriggerView,
       meta: {
-        title: "Trigger",
-        icon: "el-icon-s-data"
-      },
-      children: [
-        {
-          path: "/triggers",
-          name: "AllTriggerView",
-          component: AllTriggerView,
-          meta: {
-            title: "AllTrigger"
-          }
-        }
-        ,
-        {
-          path: "/cron/triggers",
-          name: "CronTriggerView",
-          component: CronTriggerView,
-          meta: {
-            title: "CronTrigger"
-          }
-        }
-        ,
-        {
-          path: "/simple/triggers",
-          name: "SimpleTriggerView",
-          component: SimpleTriggerView,
-          meta: {
-            title: "SimpleTrigger"
-          }
-        }
-        /*,
-        {
-          path: "/simprop/triggers",
-          name: "SimpropTriggerView",
-          component: SimpropTriggerView,
-          meta: {
-            title: "SimpropTrigger"
-          }
-        }
-        ,
-        {
-          path: "/blob/triggers",
-          name: "BlobTriggerView",
-          component: BlobTriggerView,
-          meta: {
-            title: "BlobTrigger"
-          }
-        }*/
-      ]
-    }
-    /*,
-    {
-      path: "/dashboard",
-      name: "DashboardView",
-      component: DashboardView,
-      meta: {
-        title: "DashBoard",
+        title: "CronTrigger",
         icon: "el-icon-s-data"
       }
-    }*/
+    }
+    ,
+    {
+      path: "/simple/triggers",
+      name: "SimpleTriggerView",
+      component: SimpleTriggerView,
+      meta: {
+        title: "SimpleTrigger",
+        icon: "el-icon-s-data"
+      }
+    }
     ,
     {
       path: "/**",

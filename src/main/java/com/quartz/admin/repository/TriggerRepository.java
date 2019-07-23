@@ -11,5 +11,6 @@ import java.util.List;
 
 public interface TriggerRepository extends JpaRepository<QuartzTriggers, TriggerId> {
 
-    List<QuartzTriggers> findByJobGroup(String jobGroup);
+    List<QuartzTriggers> findById_SchedulerNameAndJobGroupAndJobName(String schedulerName, String jobGroup, String jobName);
+
 }

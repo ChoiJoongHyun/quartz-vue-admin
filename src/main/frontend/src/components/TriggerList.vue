@@ -8,19 +8,10 @@
     <div>
       <el-table :data="triggerList" style="width: 100%" size="mini">
 
-        <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
-        </el-table-column>
-
         <el-table-column prop="id.triggerGroup" label="TriggerGroup" sortable>
         </el-table-column>
 
         <el-table-column prop="id.triggerName" label="TriggerName" sortable>
-        </el-table-column>
-
-        <el-table-column prop="jobGroup" label="JobGroup" sortable>
-        </el-table-column>
-
-        <el-table-column prop="jobName" label="JobName" sortable>
         </el-table-column>
 
         <el-table-column prop="priority" label="Priority" sortable width="90">
@@ -41,6 +32,12 @@
         <el-table-column label="StartTime" sortable>
           <template slot-scope="scope">
             {{ scope.row.startTime | dateformatByLong }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="EndTime" sortable>
+          <template slot-scope="scope">
+            {{ scope.row.endTime | dateformatByLong }}
           </template>
         </el-table-column>
 
@@ -117,8 +114,9 @@
     methods: {
 
       setTriggerList() {
-        TriggerAdapter.getTriggerList().then((res) => {
-          this.triggerList = res;
+        TriggerAdapter.getTriggerListByJobId(this.jobId.schedulerName, this.jobId.jobGroup, this.jobId.jobName)
+          .then((res) => {
+            this.triggerList = res;
         });
       }
     },

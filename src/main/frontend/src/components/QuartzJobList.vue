@@ -6,20 +6,17 @@
               style="width: 100%">
 
       <el-table-column type="expand">
-
         <template slot-scope="props">
-
           <div class="sub-table-area">
             <p>Description : {{ props.row.description }}</p>
-            <p>JobClassName : {{ props.row.jobClassName }}</p>
+            <p style="margin-bottom: 20px">JobClassName : {{ props.row.jobClassName }}</p>
+
+            <el-tag type="info">Trigger List</el-tag>
 
             <TriggerList :jobId="props.row.id">
-
             </TriggerList>
           </div>
-
         </template>
-
       </el-table-column>
 
       <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
@@ -191,5 +188,6 @@
   .sub-table-area {
     margin-left: 50px;
     margin-right: 50px;
+    margin-bottom: 30px;
   }
 </style>
