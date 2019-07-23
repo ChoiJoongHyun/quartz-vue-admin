@@ -24,6 +24,13 @@ public class JobController {
         return this.jobService.findAll();
     }
 
+    @GetMapping(ApiPath.JOB_ID)
+    public JobDTO getJob(@PathVariable String schedulerName,
+                         @PathVariable String jobGroup,
+                         @PathVariable String jobName) {
+        return this.jobService.findById(new JobId(schedulerName, jobGroup, jobName));
+    }
+
     @DeleteMapping(ApiPath.JOB_ID)
     public List<JobDTO> deleteJob(@PathVariable String schedulerName,
                                   @PathVariable String jobGroup,

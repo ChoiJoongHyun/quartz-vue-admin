@@ -32,4 +32,13 @@ public class JobId implements Serializable {
         this.jobGroup = jobGroup;
         this.jobName = jobName;
     }
+
+    @Override
+    public String toString() {
+        return "JobId{" +
+                "schedulerName='" + schedulerName + '\'' +
+                ", jobName='" + jobName + '\'' +
+                ", jobGroup='" + jobGroup + '\'' +
+                '}';
+    }
 }
