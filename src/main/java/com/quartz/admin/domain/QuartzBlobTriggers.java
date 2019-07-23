@@ -21,11 +21,7 @@ public class QuartzBlobTriggers implements Serializable {
     @Column(name = "BLOB_DATA")
     private String blobData;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "SCHED_NAME", referencedColumnName = "SCHED_NAME", insertable = false, updatable = false),
-            @JoinColumn(name = "TRIGGER_NAME", referencedColumnName = "TRIGGER_NAME", insertable = false, updatable = false),
-            @JoinColumn(name = "TRIGGER_GROUP", referencedColumnName = "TRIGGER_GROUP", insertable = false, updatable = false),
-    })
+    @OneToOne(fetch = FetchType.EAGER)
+    @PrimaryKeyJoinColumn
     private QuartzTriggers trigger;
 }
