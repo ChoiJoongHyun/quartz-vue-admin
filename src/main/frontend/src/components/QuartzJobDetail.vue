@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <el-form ref="form" :model="job" label-width="140px">
+    <el-form ref="form" :model="job" size="mini" label-width="140px">
       <el-form-item label="SchedulerName">
         <el-input v-model="job.id.schedulerName" disabled></el-input>
       </el-form-item>
@@ -61,7 +61,8 @@
 
     props: {
       jobId: {
-        type: Object //TODO 필수값 처리.
+        type: Object,
+        required: true
       }
     },
 

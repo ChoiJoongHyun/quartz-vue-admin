@@ -86,15 +86,31 @@
     </el-table>
 
     <template>
-      <el-dialog title="Detail" :visible.sync="detailDialogVisible"
+      <el-dialog title="Detail"
                  width="35%"
                  align="left"
+                 :visible.sync="detailDialogVisible"
                  :before-close="handleClose">
 
         <QuartzJobDetail v-if="detailDialogVisible"
                          :job-id="selectedJobId"
                          @submit="submitDetailForm"
-                         @cancel-form="cancelDetailForm"></QuartzJobDetail>
+                         @cancel-form="cancelDialog"></QuartzJobDetail>
+
+      </el-dialog>
+    </template>
+
+    <template>
+      <el-dialog title="ADD Simple Trigger"
+                 width="35%"
+                 align="left"
+                 :visible.sync="addSimpleTriggerDialogVisible"
+                 :before-close="handleClose">
+
+        <SimpleTriggerAdd v-if="addSimpleTriggerDialogVisible"
+                         :job-id="selectedJobId"
+                         @submit="submitSimpleTriggerForm"
+                         @cancel-form="cancelDialog"></SimpleTriggerAdd>
 
       </el-dialog>
     </template>
@@ -106,6 +122,7 @@
 <script>
   import TriggerList from '../components/TriggerList';
   import QuartzJobDetail from '../components/QuartzJobDetail';
+  import SimpleTriggerAdd from '../components/SimpleTriggerAdd';
 
   import JobAdapter from '../adapter/jobAdapter';
 
@@ -132,7 +149,9 @@
         * */
         jobList: [],
         selectedJobId: {},
-        detailDialogVisible: false
+        detailDialogVisible: false,
+        addSimpleTriggerDialogVisible: false
+
       }
     },
 
@@ -150,7 +169,8 @@
       },
 
       addSimpleTrigger(row) {
-        alert("add");
+        this.selectedJobId = row.id;
+        this.addSimpleTriggerDialogVisible = true;
       },
 
       detailJob(row) {
@@ -158,15 +178,22 @@
         this.detailDialogVisible = true;
       },
 
-      cancelDetailForm() {
+      cancelDialog() {
         this.selectedJobId = {};
         this.detailDialogVisible = false;
+        this.addSimpleTriggerDialogVisible = false;
       },
 
       submitDetailForm() {
         this.selectedJobId = {};
         this.detailDialogVisible = false;
         this.setJobList();
+      },
+
+      submitSimpleTriggerForm() {
+        alert("submitSimpleTriggerForm");
+        this.selectedJobId = {};
+        this.addSimpleTriggerDialogVisible = false;
       },
 
       handleClose(done) {
@@ -179,7 +206,7 @@
     },
 
     components: {
-      TriggerList, QuartzJobDetail
+      TriggerList, QuartzJobDetail, SimpleTriggerAdd
     }
   }
 </script>

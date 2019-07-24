@@ -3,12 +3,15 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.api.request.JobIdRequest;
 import com.quartz.admin.controller.path.ApiPath;
-import com.quartz.admin.domain.JobId;
 import com.quartz.admin.service.JobService;
 import com.quartz.admin.service.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -25,17 +28,13 @@ public class JobController {
     }
 
     @GetMapping(ApiPath.JOB_ID)
-    public JobDTO getJob(@PathVariable String schedulerName,
-                         @PathVariable String jobGroup,
-                         @PathVariable String jobName) {
-        return this.jobService.findById(new JobId(schedulerName, jobGroup, jobName));
+    public JobDTO getJob(JobIdRequest jobIdRequest) {
+        return this.jobService.findById(jobIdRequest.toJobId());
     }
 
     @DeleteMapping(ApiPath.JOB_ID)
-    public List<JobDTO> deleteJob(@PathVariable String schedulerName,
-                                  @PathVariable String jobGroup,
-                                  @PathVariable String jobName) {
-        jobService.deleteJob(new JobId(schedulerName, jobGroup, jobName));
+    public List<JobDTO> deleteJob(JobIdRequest jobIdRequest) {
+        jobService.deleteJob(jobIdRequest.toJobId());
         return this.jobService.findAll();
     }
 }
