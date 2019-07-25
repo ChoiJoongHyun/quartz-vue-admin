@@ -71,16 +71,4 @@ public class QuartzTriggers implements Serializable {
             @JoinColumn(name = "JOB_GROUP", referencedColumnName = "JOB_GROUP", insertable = false, updatable = false),
     })
     private QuartzJobDetails jobDetails;
-
-    /*public JobDataMap getJobDataMap() {
-
-    }*/
-
-   /* public String getStrJobData() {
-        if(this.jobData == null) {
-            return null;
-        }
-
-        return BlobConverter.toString(this.jobData);
-    }*/
 }
