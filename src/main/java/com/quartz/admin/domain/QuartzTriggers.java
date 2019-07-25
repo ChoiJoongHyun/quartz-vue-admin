@@ -4,15 +4,16 @@
 package com.quartz.admin.domain;
 
 import com.quartz.admin.util.BlobConverter;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Blob;
 
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
+@Builder
 @Entity
 @Table(name = "QRTZ_TRIGGERS")
 public class QuartzTriggers implements Serializable {
@@ -20,11 +21,11 @@ public class QuartzTriggers implements Serializable {
     @EmbeddedId
     private TriggerId id;
 
-    @Column(name = "JOB_NAME")
-    private String jobName;
-
-    @Column(name = "JOB_GROUP")
+    @Column(name = "JOB_GROUP", nullable = false)
     private String jobGroup;
+
+    @Column(name = "JOB_NAME", nullable = false)
+    private String jobName;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -38,14 +39,14 @@ public class QuartzTriggers implements Serializable {
     @Column(name = "PRIORITY")
     private Long priority;
 
-    @Column(name = "TRIGGER_STATE")
+    @Column(name = "TRIGGER_STATE", nullable = false)
     private String triggerState;
 
-    @Column(name = "TRIGGER_TYPE")
+    @Column(name = "TRIGGER_TYPE", nullable = false)
     @Enumerated(EnumType.STRING)
     private TriggerType triggerType;
 
-    @Column(name = "START_TIME")
+    @Column(name = "START_TIME", nullable = false)
     private Long startTime;
 
     @Column(name = "END_TIME")

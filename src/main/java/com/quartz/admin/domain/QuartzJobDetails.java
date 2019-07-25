@@ -24,20 +24,20 @@ public class QuartzJobDetails implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "JOB_CLASS_NAME")
+    @Column(name = "JOB_CLASS_NAME", nullable = false)
     private String jobClassName;
 
-    @Column(name = "IS_DURABLE")
-    private Boolean isDurable;
+    @Column(name = "IS_DURABLE", nullable = false)
+    private boolean durable;
 
-    @Column(name = "IS_NONCONCURRENT")
-    private Boolean isNonConcurrent;
+    @Column(name = "IS_NONCONCURRENT", nullable = false)
+    private boolean nonConcurrent;
 
-    @Column(name = "IS_UPDATE_DATA")
-    private Boolean isUpdateData;
+    @Column(name = "IS_UPDATE_DATA", nullable = false)
+    private boolean updateData;
 
-    @Column(name = "REQUESTS_RECOVERY")
-    private Boolean requestsRecovery;
+    @Column(name = "REQUESTS_RECOVERY", nullable = false)
+    private boolean requestsRecovery;
 
     @Column(name = "JOB_DATA")
     private String jobData;

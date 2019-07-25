@@ -21,15 +21,15 @@ public class TriggerId implements Serializable {
     @Column(name="SCHED_NAME")
     private String schedulerName;
 
-    @Column(name="TRIGGER_NAME")
-    private String triggerName;
-
     @Column(name="TRIGGER_GROUP")
     private String triggerGroup;
 
-    public TriggerId(String schedulerName, String triggerName, String triggerGroup) {
+    @Column(name="TRIGGER_NAME")
+    private String triggerName;
+
+    public TriggerId(String schedulerName, String triggerGroup, String triggerName) {
         this.schedulerName = schedulerName;
-        this.triggerName = triggerName;
         this.triggerGroup = triggerGroup;
+        this.triggerName = triggerName;
     }
 }
