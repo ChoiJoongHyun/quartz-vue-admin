@@ -5,6 +5,8 @@ package com.quartz.admin.service;
 
 import com.quartz.admin.domain.JobId;
 import com.quartz.admin.domain.QuartzTriggers;
+import com.quartz.admin.domain.TriggerId;
+import com.quartz.admin.exception.ServiceException;
 import com.quartz.admin.repository.TriggerRepository;
 import com.quartz.admin.service.dto.TriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +30,12 @@ public class TriggerService {
     public List<TriggerDTO> findByJobId(JobId id) {
         List<QuartzTriggers> triggers = this.triggerRepository.findById_SchedulerNameAndJobGroupAndJobName(id.getSchedulerName(), id.getJobGroup(), id.getJobName());
         return TriggerDTO.from(triggers);
+    }
+
+    public TriggerDTO findById(TriggerId id) {
+        QuartzTriggers trigger = this.triggerRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("trigger is null triggerId : " + id));
+
+        return TriggerDTO.from(trigger);
     }
 }

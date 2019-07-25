@@ -4,6 +4,7 @@
 package com.quartz.admin.controller.api;
 
 import com.quartz.admin.controller.api.request.JobIdRequest;
+import com.quartz.admin.controller.api.request.TriggerIdRequest;
 import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.TriggerService;
 import com.quartz.admin.service.dto.TriggerDTO;
@@ -24,6 +25,11 @@ public class TriggerController {
     @GetMapping
     public List<TriggerDTO> triggerList() {
         return this.triggerService.findAll();
+    }
+
+    @GetMapping(ApiPath.TRIGGER_ID)
+    public TriggerDTO trigger(TriggerIdRequest triggerIdRequest) {
+        return this.triggerService.findById(triggerIdRequest.toTriggerId());
     }
 
     @GetMapping(ApiPath.JOB_ID)

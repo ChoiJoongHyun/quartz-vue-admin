@@ -32,4 +32,13 @@ public class TriggerId implements Serializable {
         this.triggerGroup = triggerGroup;
         this.triggerName = triggerName;
     }
+
+    @Override
+    public String toString() {
+        return "TriggerId{" +
+                "schedulerName='" + schedulerName + '\'' +
+                ", triggerGroup='" + triggerGroup + '\'' +
+                ", triggerName='" + triggerName + '\'' +
+                '}';
+    }
 }
