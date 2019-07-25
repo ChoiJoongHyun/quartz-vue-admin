@@ -18,10 +18,10 @@ import java.io.Serializable;
 @Embeddable
 public class LockId implements Serializable {
 
-    @Column(name = "SCHED_NAME")
+    @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "LOCK_NAME")
+    @Column(name = "LOCK_NAME", nullable = false, length = 40)
     private String lockName;
 
     public LockId(String schedulerName, String lockName) {

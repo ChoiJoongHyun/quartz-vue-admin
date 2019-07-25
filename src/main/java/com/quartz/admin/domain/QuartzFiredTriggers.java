@@ -21,25 +21,25 @@ public class QuartzFiredTriggers implements Serializable {
     @EmbeddedId
     private FiredTriggerId id;
 
-    @Column(name = "TRIGGER_NAME")
-    private String triggerName;
-
-    @Column(name = "TRIGGER_GROUP")
+    @Column(name = "TRIGGER_GROUP", nullable = false, length = 200)
     private String triggerGroup;
 
-    @Column(name = "INSTANCE_NAME")
+    @Column(name = "TRIGGER_NAME", nullable = false, length = 200)
+    private String triggerName;
+
+    @Column(name = "INSTANCE_NAME", nullable = false, length = 200)
     private String instanceName;
 
-    @Column(name = "FIRED_TIME")
-    private Long firedTime;
+    @Column(name = "FIRED_TIME", nullable = false)
+    private long firedTime;
 
-    @Column(name = "SCHED_TIME")
-    private Long schedulerTime;
+    @Column(name = "SCHED_TIME", nullable = false)
+    private long schedulerTime;
 
-    @Column(name = "PRIORITY")
-    private Long priority;
+    @Column(name = "PRIORITY", nullable = false)
+    private long priority;
 
-    @Column(name = "STATE")
+    @Column(name = "STATE", nullable = false, length = 16)
     private String state;
 
     @Column(name = "JOB_NAME")

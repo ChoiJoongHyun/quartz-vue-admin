@@ -21,6 +21,6 @@ public class QuartzCalendars implements Serializable {
     @EmbeddedId
     private CalendarId id;
 
-    @Column(name = "CALENDAR")
+    @Column(name = "CALENDAR", nullable = false)
     private String calendar;
 }

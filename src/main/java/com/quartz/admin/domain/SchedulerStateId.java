@@ -18,10 +18,10 @@ import java.io.Serializable;
 @Embeddable
 public class SchedulerStateId implements Serializable {
 
-    @Column(name = "SCHED_NAME")
+    @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "INSTANCE_NAME")
+    @Column(name = "INSTANCE_NAME", nullable = false, length = 200)
     private String instanceName;
 
     public SchedulerStateId(String schedulerName, String instanceName) {

@@ -21,9 +21,9 @@ public class QuartzSchedulerState implements Serializable {
     @EmbeddedId
     private SchedulerStateId id;
 
-    @Column(name = "LAST_CHECKIN_TIME")
-    private Long lastCheckinTime;
+    @Column(name = "LAST_CHECKIN_TIME", nullable = false)
+    private long lastCheckinTime;
 
-    @Column(name = "CHECKIN_INTERVAL")
-    private Long checkinInterval;
+    @Column(name = "CHECKIN_INTERVAL", nullable = false)
+    private long checkinInterval;
 }

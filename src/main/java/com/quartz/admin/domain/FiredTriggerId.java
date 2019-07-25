@@ -18,10 +18,10 @@ import java.io.Serializable;
 @Embeddable
 public class FiredTriggerId implements Serializable {
 
-    @Column(name = "SCHED_NAME")
+    @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "ENTRY_ID")
+    @Column(name = "ENTRY_ID", nullable = false, length = 95)
     private String entryId;
 
     public FiredTriggerId(String schedulerName, String entryId) {

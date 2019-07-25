@@ -18,13 +18,13 @@ import java.io.Serializable;
 @Embeddable
 public class TriggerId implements Serializable {
 
-    @Column(name="SCHED_NAME")
+    @Column(name="SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name="TRIGGER_GROUP")
+    @Column(name="TRIGGER_GROUP", nullable = false, length = 200)
     private String triggerGroup;
 
-    @Column(name="TRIGGER_NAME")
+    @Column(name="TRIGGER_NAME", nullable = false, length = 200)
     private String triggerName;
 
     public TriggerId(String schedulerName, String triggerGroup, String triggerName) {

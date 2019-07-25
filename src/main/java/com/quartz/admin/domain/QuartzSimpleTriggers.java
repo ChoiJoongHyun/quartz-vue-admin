@@ -20,13 +20,13 @@ public class QuartzSimpleTriggers implements Serializable {
     private TriggerId id;
 
     @Column(name = "REPEAT_COUNT", nullable = false)
-    private Long repeatCount;
+    private long repeatCount;
 
     @Column(name = "REPEAT_INTERVAL", nullable = false)
-    private Long repeatInterval;
+    private long repeatInterval;
 
     @Column(name = "TIMES_TRIGGERED", nullable = false)
-    private Long timesTriggered;
+    private long timesTriggered;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @PrimaryKeyJoinColumn

@@ -18,10 +18,10 @@ import java.io.Serializable;
 @Getter
 public class CalendarId implements Serializable {
 
-    @Column(name = "SCHED_NAME")
+    @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "CALENDAR_NAME")
+    @Column(name = "CALENDAR_NAME", nullable = false, length = 200)
     private String calendarName;
 
     public CalendarId(String schedulerName, String calendarName) {

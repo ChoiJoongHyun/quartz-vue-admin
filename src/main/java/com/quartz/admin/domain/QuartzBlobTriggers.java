@@ -21,7 +21,7 @@ public class QuartzBlobTriggers implements Serializable {
     @Column(name = "BLOB_DATA")
     private String blobData;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @PrimaryKeyJoinColumn
     private QuartzTriggers trigger;
 }

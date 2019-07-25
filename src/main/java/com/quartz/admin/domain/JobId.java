@@ -18,13 +18,13 @@ import java.io.Serializable;
 @Embeddable
 public class JobId implements Serializable {
 
-    @Column(name = "SCHED_NAME")
+    @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "JOB_NAME")
+    @Column(name = "JOB_NAME", nullable = false, length = 200)
     private String jobName;
 
-    @Column(name = "JOB_GROUP")
+    @Column(name = "JOB_GROUP", nullable = false, length = 200)
     private String jobGroup;
 
     public JobId(String schedulerName, String jobGroup, String jobName) {

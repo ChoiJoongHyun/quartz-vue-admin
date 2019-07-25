@@ -21,13 +21,13 @@ public class QuartzTriggers implements Serializable {
     @EmbeddedId
     private TriggerId id;
 
-    @Column(name = "JOB_GROUP", nullable = false)
+    @Column(name = "JOB_GROUP", nullable = false, length = 200)
     private String jobGroup;
 
-    @Column(name = "JOB_NAME", nullable = false)
+    @Column(name = "JOB_NAME", nullable = false, length = 200)
     private String jobName;
 
-    @Column(name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION", length = 250)
     private String description;
 
     @Column(name = "NEXT_FIRE_TIME")
@@ -39,20 +39,20 @@ public class QuartzTriggers implements Serializable {
     @Column(name = "PRIORITY")
     private Long priority;
 
-    @Column(name = "TRIGGER_STATE", nullable = false)
+    @Column(name = "TRIGGER_STATE", nullable = false, length = 16)
     private String triggerState;
 
-    @Column(name = "TRIGGER_TYPE", nullable = false)
+    @Column(name = "TRIGGER_TYPE", nullable = false, length = 8)
     @Enumerated(EnumType.STRING)
     private TriggerType triggerType;
 
     @Column(name = "START_TIME", nullable = false)
-    private Long startTime;
+    private long startTime;
 
     @Column(name = "END_TIME")
     private Long endTime;
 
-    @Column(name = "CALENDAR_NAME")
+    @Column(name = "CALENDAR_NAME", length = 200)
     private String calendarName;
 
     @Column(name = "MISFIRE_INSTR")

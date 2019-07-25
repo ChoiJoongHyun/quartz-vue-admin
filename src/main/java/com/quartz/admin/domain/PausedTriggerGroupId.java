@@ -18,10 +18,10 @@ import java.io.Serializable;
 @Embeddable
 public class PausedTriggerGroupId implements Serializable {
 
-    @Column(name = "SCHED_NAME")
+    @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "TRIGGER_GROUP")
+    @Column(name = "TRIGGER_GROUP", nullable = false, length = 200)
     private String triggerGroup;
 
     public PausedTriggerGroupId(String schedulerName, String triggerGroup) {

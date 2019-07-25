@@ -18,13 +18,13 @@ public class QuartzSimpropTriggers implements Serializable {
     @EmbeddedId
     private TriggerId id;
 
-    @Column(name = "STR_PROP_1")
+    @Column(name = "STR_PROP_1", length = 512)
     private String strProp1;
 
-    @Column(name = "STR_PROP_2")
+    @Column(name = "STR_PROP_2", length = 512)
     private String strProp2;
 
-    @Column(name = "STR_PROP_3")
+    @Column(name = "STR_PROP_3", length = 512)
     private String strProp3;
 
     @Column(name = "INT_PROP_1")
@@ -51,7 +51,7 @@ public class QuartzSimpropTriggers implements Serializable {
     @Column(name = "BOOL_PROP_2")
     private String boolProp2;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @PrimaryKeyJoinColumn
     private QuartzTriggers trigger;
 }
