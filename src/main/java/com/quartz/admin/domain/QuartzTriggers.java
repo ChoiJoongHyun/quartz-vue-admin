@@ -3,12 +3,13 @@
  */
 package com.quartz.admin.domain;
 
-import com.quartz.admin.util.BlobConverter;
+import com.quartz.admin.enums.TriggerState;
+import com.quartz.admin.enums.TriggerType;
 import lombok.*;
+import org.quartz.JobDataMap;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -40,7 +41,8 @@ public class QuartzTriggers implements Serializable {
     private Long priority;
 
     @Column(name = "TRIGGER_STATE", nullable = false, length = 16)
-    private String triggerState;
+    @Enumerated(EnumType.STRING)
+    private TriggerState triggerState;
 
     @Column(name = "TRIGGER_TYPE", nullable = false, length = 8)
     @Enumerated(EnumType.STRING)
@@ -59,7 +61,8 @@ public class QuartzTriggers implements Serializable {
     private Long misfireInstr;
 
     @Column(name = "JOB_DATA")
-    private Blob jobData;
+    @Lob
+    private JobDataMap jobData;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumns({
@@ -69,11 +72,15 @@ public class QuartzTriggers implements Serializable {
     })
     private QuartzJobDetails jobDetails;
 
-    public String getStrJobData() {
+    /*public JobDataMap getJobDataMap() {
+
+    }*/
+
+   /* public String getStrJobData() {
         if(this.jobData == null) {
             return null;
         }
 
         return BlobConverter.toString(this.jobData);
-    }
+    }*/
 }

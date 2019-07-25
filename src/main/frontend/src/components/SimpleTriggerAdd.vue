@@ -19,6 +19,7 @@
       <el-form-item label="StartTime">
         <el-date-picker v-model="simpleTriggerForm.startTime"
                         type="datetime"
+                        value-format="yyyy-MM-dd HH:mm:ss"
                         placeholder="Select date and time">
         </el-date-picker>
       </el-form-item>
@@ -26,6 +27,7 @@
       <el-form-item label="EndTime">
         <el-date-picker v-model="simpleTriggerForm.endTime"
                         type="datetime"
+                        value-format="yyyy-MM-dd HH:mm:ss"
                         placeholder="Select date and time">
         </el-date-picker>
       </el-form-item>
@@ -53,7 +55,7 @@
 
       <el-form-item label="JobDataMap">
 
-        <el-row v-for="(data, index) in simpleTriggerForm.jobDataMap" v-bind:key="index">
+        <el-row v-for="(data, index) in simpleTriggerForm.jobDataList" v-bind:key="index">
           <span>key : </span>
           <el-input v-model="data.key" style="width: 100px"></el-input>
           <span style="margin-left: 20px">value : </span>
@@ -82,6 +84,8 @@
 </template>
 
 <script>
+  import SimpleTriggerAdapter from '../adapter/simpleTriggerAdapter';
+
   export default {
     name: "SimpleTriggerAdd",
 
@@ -98,13 +102,13 @@
           triggerName: null,
           triggerGroup: null,
           description: null,
-          priority: null,
+          priority: 0,
           startTime: null,
           endTime: null,
-          repeatCount: null,
+          repeatCount: 0,
           repeatIntervalType: 'SECOND',
-          repeatInterval: null,
-          jobDataMap: []
+          repeatInterval: 0,
+          jobDataList: []
         },
 
         simpleTriggerFormRules: {
@@ -139,11 +143,11 @@
       },
 
       addJobDataMap() {
-        this.simpleTriggerForm.jobDataMap.push({});
+        this.simpleTriggerForm.jobDataList.push({});
       },
 
       removeJobDataMap(index) {
-        this.simpleTriggerForm.jobDataMap.splice(index, 1);
+        this.simpleTriggerForm.jobDataList.splice(index, 1);
       },
 
       validThenOnSubmit() {
@@ -162,10 +166,11 @@
           cancelButtonText: 'No',
           type: 'info'
         }).then(() => {
-          //TODO 수정기능 추가.
-          alert('중비중 입니다.');
-          this.job = {};
-          this.$emit('submit');
+          SimpleTriggerAdapter.postSimpleTrigger(this.jobId, this.simpleTriggerForm).then((res) => {
+            alert("success");
+            this.$emit('submit');
+          });
+
         });
       }
     },

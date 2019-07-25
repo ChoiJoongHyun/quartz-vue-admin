@@ -7,6 +7,7 @@ import com.quartz.admin.controller.api.request.SimpleTriggerAddForm;
 import com.quartz.admin.domain.JobId;
 import com.quartz.admin.domain.QuartzSimpleTriggers;
 import com.quartz.admin.repository.SimpleTriggerRepository;
+import com.quartz.admin.repository.TriggerRepository;
 import com.quartz.admin.service.dto.SimpleTriggerDTO;
 import lombok.RequiredArgsConstructor;
 import org.quartz.JobDataMap;
@@ -25,6 +26,7 @@ import static org.quartz.DateBuilder.*;
 @Transactional
 public class SimpleTriggerService {
 
+    private final TriggerRepository triggerRepository;
     private final SimpleTriggerRepository simpleTriggersRepository;
 
     public List<SimpleTriggerDTO> findAll() {
@@ -32,8 +34,18 @@ public class SimpleTriggerService {
         return SimpleTriggerDTO.from(simpleTriggers);
     }
 
+    public void save(JobId jobId, SimpleTriggerAddForm form) {
+        QuartzSimpleTriggers simpleTriggers = form.toQuartzSimpleTriggers(jobId);
+
+        triggerRepository.save(simpleTriggers.getTrigger());
+        simpleTriggersRepository.save(simpleTriggers);
+    }
+
     public void save(SimpleTriggerAddForm form) {
-        SimpleTriggerImpl simpleTrigger = (SimpleTriggerImpl) simpleSchedule().withIntervalInHours(1)
+        SimpleTriggerImpl simpleTrigger = (SimpleTriggerImpl) simpleSchedule()
+                .withIntervalInHours(1)
+                .repeatForever()
+
                 .build();
 
 

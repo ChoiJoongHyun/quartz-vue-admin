@@ -5,11 +5,9 @@ package com.quartz.admin.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.quartz.JobDataMap;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @NoArgsConstructor
@@ -40,5 +38,6 @@ public class QuartzJobDetails implements Serializable {
     private boolean requestsRecovery;
 
     @Column(name = "JOB_DATA")
-    private String jobData;
+    @Lob
+    private JobDataMap jobData;
 }

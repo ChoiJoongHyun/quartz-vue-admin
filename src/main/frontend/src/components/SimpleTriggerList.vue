@@ -29,7 +29,7 @@
         <el-table-column prop="repeatCount" label="RepeatCount">
         </el-table-column>
 
-        <el-table-column prop="repeatInterval" label="RepeatInterval">
+        <el-table-column prop="repeatInterval" label="RepeatInterval (ms)">
         </el-table-column>
 
         <el-table-column prop="timesTriggered" label="TimesTriggered">

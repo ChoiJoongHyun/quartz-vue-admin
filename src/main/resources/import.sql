@@ -1,15 +1,15 @@
 /* 트리거 상세 */
 INSERT INTO QRTZ_JOB_DETAILS
 (SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA)
-VALUES ('scheduler-name-01', 'job-name-01', 'job-group-01', 'detail-description', 'com.zum.autoconfigure.scheduler.DefaultQuartzJob', 1, 1, 1, 0, 'job_data_1' );
+VALUES ('scheduler-name-01', 'job-name-01', 'job-group-01', 'detail-description', 'com.zum.autoconfigure.scheduler.DefaultQuartzJob', 1, 1, 1, 0, null );
 
 INSERT INTO QRTZ_JOB_DETAILS
 (SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA)
-VALUES ('scheduler-name-02', 'job-name-02', 'job-group-02', 'detail-description', 'com.zum.autoconfigure.scheduler.DefaultQuartzJob', 1, 1, 1, 0, 'job_data_2'  );
+VALUES ('scheduler-name-02', 'job-name-02', 'job-group-02', 'detail-description', 'com.zum.autoconfigure.scheduler.DefaultQuartzJob', 1, 1, 1, 0, null  );
 
 INSERT INTO QRTZ_JOB_DETAILS
 (SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA)
-VALUES ('scheduler-name-03', 'job-name-03', 'job-group-03', 'detail-description', 'com.zum.autoconfigure.scheduler.DefaultQuartzJob', 1, 1, 1, 0, 'job_data_3'  );
+VALUES ('scheduler-name-03', 'job-name-03', 'job-group-03', 'detail-description', 'com.zum.autoconfigure.scheduler.DefaultQuartzJob', 1, 1, 1, 0, null  );
 
 INSERT INTO QRTZ_JOB_DETAILS
 (SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA)

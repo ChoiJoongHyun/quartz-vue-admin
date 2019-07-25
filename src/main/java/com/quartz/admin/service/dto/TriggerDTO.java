@@ -5,11 +5,13 @@ package com.quartz.admin.service.dto;
 
 import com.quartz.admin.domain.QuartzTriggers;
 import com.quartz.admin.domain.TriggerId;
-import com.quartz.admin.domain.TriggerType;
+import com.quartz.admin.enums.TriggerState;
+import com.quartz.admin.enums.TriggerType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.quartz.JobDataMap;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,14 +28,14 @@ public class TriggerDTO {
     private Long nextFireTime;
     private Long prevFireTime;
     private Long priority;
-    private String triggerState;
+    private TriggerState triggerState;
     private TriggerType triggerType;
     private Long startTime;
     private Long endTime;
     private String calendarName;
     private Long misfireInstr;
-    private String jobData;
-
+    //private byte[] jobData;
+    private JobDataMap jobData;
     private JobDTO jobDetail;
 
     public static TriggerDTO from(QuartzTriggers triggers) {
@@ -51,7 +53,7 @@ public class TriggerDTO {
                 .endTime(triggers.getEndTime())
                 .calendarName(triggers.getCalendarName())
                 .misfireInstr(triggers.getMisfireInstr())
-                .jobData(triggers.getStrJobData())
+                .jobData(triggers.getJobData())
                 .jobDetail(JobDTO.from(triggers.getJobDetails()))
                 .build();
     }

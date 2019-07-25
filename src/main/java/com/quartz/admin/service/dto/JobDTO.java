@@ -9,6 +9,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.quartz.JobDataMap;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,17 +26,17 @@ public class JobDTO {
     private Boolean isNonConcurrent;
     private Boolean isUpdateData;
     private Boolean requestsRecovery;
-    private String jobData;
+    private JobDataMap jobData;
 
     public static JobDTO from(QuartzJobDetails jobDetails) {
         return JobDTO.builder()
                 .id(jobDetails.getId())
                 .description(jobDetails.getDescription())
                 .jobClassName(jobDetails.getJobClassName())
-                .isDurable(jobDetails.getIsDurable())
-                .isNonConcurrent(jobDetails.getIsNonConcurrent())
-                .isUpdateData(jobDetails.getIsUpdateData())
-                .requestsRecovery(jobDetails.getRequestsRecovery())
+                .isDurable(jobDetails.isDurable())
+                .isNonConcurrent(jobDetails.isNonConcurrent())
+                .isUpdateData(jobDetails.isUpdateData())
+                .requestsRecovery(jobDetails.isRequestsRecovery())
                 .jobData(jobDetails.getJobData())
                 .build();
     }
