@@ -46,6 +46,7 @@ public class ExceptionAdvice {
          * required query param bind exception
          * */
         @ExceptionHandler(BindException.class)
+        @ResponseStatus(HttpStatus.BAD_REQUEST)
         @ResponseBody
         public ErrorResponse bindException(BindException e) {
             String message = ExceptionAdvice.generateFieldErrorMessage(e);
@@ -57,6 +58,7 @@ public class ExceptionAdvice {
          * exception in case there is no content (body)
          * */
         @ExceptionHandler(HttpMessageNotReadableException.class)
+        @ResponseStatus(HttpStatus.BAD_REQUEST)
         @ResponseBody
         public ErrorResponse httpMessageNotReadableException() {
             return new ErrorResponse("request body is empty");
@@ -66,6 +68,7 @@ public class ExceptionAdvice {
          * required request body bind exception
          * */
         @ExceptionHandler(MethodArgumentNotValidException.class)
+        @ResponseStatus(HttpStatus.BAD_REQUEST)
         @ResponseBody
         public ErrorResponse methodArgumentNotValidException(MethodArgumentNotValidException e) {
             BindingResult bindingResult = e.getBindingResult();
