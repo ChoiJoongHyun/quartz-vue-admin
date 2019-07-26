@@ -22,10 +22,10 @@ public class JobDTO {
     private JobId id;
     private String description;
     private String jobClassName;
-    private Boolean isDurable;
-    private Boolean isNonConcurrent;
-    private Boolean isUpdateData;
-    private Boolean requestsRecovery;
+    private boolean durable;
+    private boolean nonConcurrent;
+    private boolean updateData;
+    private boolean requestsRecovery;
     private JobDataMap jobData;
 
     public static JobDTO from(QuartzJobDetails jobDetails) {
@@ -33,9 +33,9 @@ public class JobDTO {
                 .id(jobDetails.getId())
                 .description(jobDetails.getDescription())
                 .jobClassName(jobDetails.getJobClassName())
-                .isDurable(jobDetails.isDurable())
-                .isNonConcurrent(jobDetails.isNonConcurrent())
-                .isUpdateData(jobDetails.isUpdateData())
+                .durable(jobDetails.isDurable())
+                .nonConcurrent(jobDetails.isNonConcurrent())
+                .updateData(jobDetails.isUpdateData())
                 .requestsRecovery(jobDetails.isRequestsRecovery())
                 .jobData(jobDetails.getJobData())
                 .build();

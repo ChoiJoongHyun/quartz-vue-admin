@@ -30,19 +30,19 @@
 
       <el-table-column label="Durable" width="80">
         <template slot-scope="scope">
-          {{ scope.row.isDurable }}
+          {{ scope.row.durable }}
         </template>
       </el-table-column>
 
       <el-table-column label="NonConcurrent" width="130">
         <template slot-scope="scope">
-          {{ scope.row.isNonConcurrent }}
+          {{ scope.row.nonConcurrent }}
         </template>
       </el-table-column>
 
       <el-table-column label="UpdateData" width="100">
         <template slot-scope="scope">
-          {{ scope.row.isUpdateData }}
+          {{ scope.row.updateData }}
         </template>
       </el-table-column>
 
@@ -140,9 +140,9 @@
             },
             "description": "detail-description",
             "jobClassName": "com.zum.autoconfigure.scheduler.DefaultQuartzJob",
-            "isDurable": true,
-            "isNonConcurrent": true,
-            "isUpdateData": true,
+            "durable": true,
+            "nonConcurrent": true,
+            "updateData": true,
             "requestsRecovery": false,
             "jobData": null
           }]

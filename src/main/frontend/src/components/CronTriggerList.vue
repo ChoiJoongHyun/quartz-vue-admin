@@ -113,9 +113,9 @@
                 },
                 "description": "detail-description",
                 "jobClassName": "com.zum.autoconfigure.scheduler.DefaultQuartzJob",
-                "isDurable": true,
-                "isNonConcurrent": true,
-                "isUpdateData": true,
+                "durable": true,
+                "nonConcurrent": true,
+                "updateData": true,
                 "requestsRecovery": false,
                 "jobData": "job_data_1"
               }

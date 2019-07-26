@@ -15,13 +15,13 @@
       </el-form-item>
 
       <el-form-item label="Durable">
-        <el-checkbox v-model="job.isDurable"></el-checkbox>
+        <el-checkbox v-model="job.durable"></el-checkbox>
       </el-form-item>
       <el-form-item label="NonConcurrent">
-        <el-checkbox v-model="job.isNonConcurrent"></el-checkbox>
+        <el-checkbox v-model="job.nonConcurrent"></el-checkbox>
       </el-form-item>
       <el-form-item label="UpdateData">
-        <el-checkbox v-model="job.isUpdateData" disabled></el-checkbox>
+        <el-checkbox v-model="job.updateData" disabled></el-checkbox>
       </el-form-item>
       <el-form-item label="RequestsRecovery">
         <el-checkbox v-model="job.requestsRecovery"></el-checkbox>
@@ -43,7 +43,7 @@
 
       <el-form-item>
 
-        <el-button type="primary" @click="onSubmit">Create</el-button>
+        <el-button type="primary" @click="onSubmit">Modify</el-button>
 
         <el-button @click="cancelForm">Cancel</el-button>
 
@@ -91,7 +91,7 @@
 
       onSubmit() {
 
-        this.$confirm(`Do you want to modify it?`, 'modify', {
+        this.$confirm(`Do you want to modify it?`, 'Modify', {
           confirmButtonText: 'Yes',
           cancelButtonText: 'No',
           type: 'info'
