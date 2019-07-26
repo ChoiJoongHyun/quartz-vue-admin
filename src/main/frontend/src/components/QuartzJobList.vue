@@ -163,11 +163,17 @@
       },
 
       deleteJob(row) {
-        JobAdapter.deleteJob(row.id).then((res) => {
-          this.jobList = res;
-          this.$message({
-            message: 'delete success',
-            type: 'success'
+        this.$confirm(`Delete the job?`, 'Delete', {
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'No',
+          type: 'warning'
+        }).then(() => {
+          JobAdapter.deleteJob(row.id).then((res) => {
+            this.jobList = res;
+            this.$message({
+              message: 'delete success',
+              type: 'success'
+            });
           });
         });
       },
