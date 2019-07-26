@@ -165,6 +165,10 @@
       deleteJob(row) {
         JobAdapter.deleteJob(row.id).then((res) => {
           this.jobList = res;
+          this.$message({
+            message: 'delete success',
+            type: 'success'
+          });
         });
       },
 

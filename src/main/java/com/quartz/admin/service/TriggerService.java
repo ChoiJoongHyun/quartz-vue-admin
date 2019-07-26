@@ -27,14 +27,14 @@ public class TriggerService {
         return TriggerDTO.from(triggers);
     }
 
-    public List<TriggerDTO> findByJobId(JobId id) {
-        List<QuartzTriggers> triggers = this.triggerRepository.findById_SchedulerNameAndJobGroupAndJobName(id.getSchedulerName(), id.getJobGroup(), id.getJobName());
+    public List<TriggerDTO> findByJobId(JobId jobId) {
+        List<QuartzTriggers> triggers = this.triggerRepository.findById_SchedulerNameAndJobGroupAndJobName(jobId.getSchedulerName(), jobId.getJobGroup(), jobId.getJobName());
         return TriggerDTO.from(triggers);
     }
 
-    public TriggerDTO findById(TriggerId id) {
-        QuartzTriggers trigger = this.triggerRepository.findById(id)
-                .orElseThrow(() -> new ServiceException("trigger is null triggerId : " + id));
+    public TriggerDTO findById(TriggerId triggerId) {
+        QuartzTriggers trigger = this.triggerRepository.findById(triggerId)
+                .orElseThrow(() -> new ServiceException("trigger is null triggerId : " + triggerId));
 
         return TriggerDTO.from(trigger);
     }
