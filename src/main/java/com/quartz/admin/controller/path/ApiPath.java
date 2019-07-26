@@ -34,11 +34,6 @@ public class ApiPath {
     }
 
     @UtilityClass
-    public  class SimpropTriggers {
-        public static final String ROOT = ApiPath.ROOT + "/simprop/triggers";
-    }
-
-    @UtilityClass
     public  class BlobTriggers {
         public static final String ROOT = ApiPath.ROOT + "/blob/triggers";
     }

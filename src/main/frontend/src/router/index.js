@@ -1,13 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import DefaultRouterView from './DefaultRouterView';
 import DashboardView from '../views/DashboardView';
-import AllTriggerView from '../views/AllTriggerView';
 import CronTriggerView from '../views/CronTriggerView';
 import SimpleTriggerView from '../views/SimpleTriggerView';
-import BlobTriggerView from '../views/BlobTriggerView';
-import SimpropTriggerView from '../views/SimpropTriggerView';
 import JobView from '../views/JobView';
 
 Vue.use(Router);
