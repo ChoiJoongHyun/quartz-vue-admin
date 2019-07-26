@@ -61,6 +61,16 @@
           </template>
         </el-table-column>
 
+        <el-table-column label="Delete" width="70">
+          <template slot-scope="scope">
+            <el-button type="danger"
+                       icon="el-icon-delete"
+                       size="mini"
+                       @click="deleteTrigger(scope.row)"
+                       circle></el-button>
+          </template>
+        </el-table-column>
+
       </el-table>
     </div>
 
@@ -72,9 +82,7 @@
                  :before-close="handleClose">
 
         <TriggerDetail v-if="detailDialogVisible"
-                       :trigger-id="selectedTriggerId"
-                       @submit="submitDetailForm"
-                       @cancel-form="cancelDialog">
+                       :trigger-id="selectedTriggerId">
         </TriggerDetail>
 
       </el-dialog>
@@ -157,13 +165,20 @@
         this.selectedTriggerId = row.id;
       },
 
-      submitDetailForm() {
-        alert('submitDetailForm');
-      },
-
-      cancelDialog() {
-        this.selectedJobId = {};
-        this.detailDialogVisible = false;
+      deleteTrigger(row) {
+        this.$confirm(`Delete the trigger?`, 'Delete', {
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'No',
+          type: 'warning'
+        }).then(() => {
+          TriggerAdapter.deleteTrigger(row.id).then(() => {
+            this.$message({
+              message: 'delete success',
+              type: 'success'
+            });
+            this.setTriggerList();
+          });
+        });
       },
 
       handleClose(done) {

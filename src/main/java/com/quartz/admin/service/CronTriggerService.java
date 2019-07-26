@@ -4,6 +4,7 @@
 package com.quartz.admin.service;
 
 import com.quartz.admin.domain.QuartzCronTriggers;
+import com.quartz.admin.domain.TriggerId;
 import com.quartz.admin.repository.CronTriggerRepository;
 import com.quartz.admin.service.dto.CronTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -23,5 +23,9 @@ public class CronTriggerService {
     public List<CronTriggerDTO> findAll() {
         List<QuartzCronTriggers> cronTriggers = this.cronTriggerRepository.findAll();
         return CronTriggerDTO.from(cronTriggers);
+    }
+
+    public void deleteById(TriggerId triggerId) {
+        cronTriggerRepository.deleteById(triggerId);
     }
 }

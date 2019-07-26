@@ -128,15 +128,6 @@
           .then((res) => {
             this.trigger = res;
           });
-      },
-
-      cancelForm() {
-        this.trigger = {};
-        this.$emit('cancel-form');
-      },
-
-      onSubmit() {
-        alert('onsubmit');
       }
     },
 

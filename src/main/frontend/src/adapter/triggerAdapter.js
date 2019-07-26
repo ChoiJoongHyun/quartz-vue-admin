@@ -26,6 +26,14 @@ export default {
         .then(res => resolve(res.data))
         .catch(ErrorHandler.error)
     });
+  },
+
+  deleteTrigger(triggerId) {
+    return new Promise(function (resolve) {
+      Axios.delete(PATH + '/scheduler-names/' + triggerId.schedulerName + '/trigger-groups/' + triggerId.triggerGroup + '/trigger-names/' + triggerId.triggerName)
+        .then(res => resolve(res.data))
+        .catch(ErrorHandler.error)
+    });
   }
 
 }
