@@ -12,9 +12,17 @@ export default {
     });
   },
 
-  getTriggerListByJobId(schedulerName, jobGroup, jobName) {
+  getTrigger(triggerId) {
     return new Promise(function (resolve) {
-      Axios.get(PATH + '/scheduler-names/' + schedulerName + '/job-groups/' + jobGroup + '/job-names/' + jobName)
+      Axios.get(PATH + '/scheduler-names/' + triggerId.schedulerName + '/trigger-groups/' + triggerId.triggerGroup + '/trigger-names/' + triggerId.triggerName)
+        .then(res => resolve(res.data))
+        .catch(ErrorHandler.error)
+    });
+  },
+
+  getTriggerListByJobId(jobId) {
+    return new Promise(function (resolve) {
+      Axios.get(PATH + '/scheduler-names/' + jobId.schedulerName + '/job-groups/' + jobId.jobGroup + '/job-names/' + jobId.jobName)
         .then(res => resolve(res.data))
         .catch(ErrorHandler.error)
     });

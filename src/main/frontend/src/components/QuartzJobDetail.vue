@@ -68,7 +68,9 @@
 
     data() {
       return {
-        job: {}
+        job: {
+          id: {}
+        }
       }
     },
 
@@ -76,7 +78,7 @@
 
       setJob() {
         //getJob
-        JobAdapter.getJob(this.jobId.schedulerName,this.jobId.jobGroup,this.jobId.jobName)
+        JobAdapter.getJob(this.jobId)
           .then((res) => {
             this.job = res;
         });

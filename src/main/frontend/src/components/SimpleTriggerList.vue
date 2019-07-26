@@ -2,9 +2,7 @@
 
   <div>
 
-    <div>
 
-    </div>
 
     <div>
 
@@ -41,9 +39,6 @@
 
       </el-table>
     </div>
-
-    </div>
-
   </div>
 
 </template>

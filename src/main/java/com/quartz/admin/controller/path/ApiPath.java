@@ -11,7 +11,7 @@ public class ApiPath {
     private static final String ROOT = "/api";
 
     public static final String JOB_ID = "/scheduler-names/{schedulerName}/job-groups/{jobGroup}/job-names/{jobName}";
-    public static final String TRIGGER_ID = "/scheduler-names/{schedulerName}/trigger-group/{triggerGroup}/trigger-name/{triggerName}";
+    public static final String TRIGGER_ID = "/scheduler-names/{schedulerName}/trigger-groups/{triggerGroup}/trigger-names/{triggerName}";
 
     @UtilityClass
     public  class Triggers {

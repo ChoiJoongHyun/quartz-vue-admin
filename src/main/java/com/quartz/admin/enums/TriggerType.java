@@ -11,5 +11,7 @@ public enum TriggerType {
     SIMPLE,
     BLOB,
     CAL_INT,
-    DAILY_I
+    DAILY_I,
+
+    SIMPROP,
 }

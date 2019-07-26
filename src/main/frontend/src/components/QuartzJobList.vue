@@ -68,7 +68,7 @@
                      icon="el-icon-edit"
                      size="mini"
                      circle
-                     @click="detailJob(scope.row)"
+                     @click="showDetailJob(scope.row)"
           ></el-button>
         </template>
       </el-table-column>
@@ -163,7 +163,7 @@
       },
 
       deleteJob(row) {
-        JobAdapter.deleteJob(row.id.schedulerName, row.id.jobGroup, row.id.jobName).then((res) => {
+        JobAdapter.deleteJob(row.id).then((res) => {
           this.jobList = res;
         });
       },
@@ -173,7 +173,7 @@
         this.addSimpleTriggerDialogVisible = true;
       },
 
-      detailJob(row) {
+      showDetailJob(row) {
         this.selectedJobId = row.id;
         this.detailDialogVisible = true;
       },

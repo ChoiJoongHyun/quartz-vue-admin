@@ -12,17 +12,17 @@ export default {
     });
   },
 
-  getJob(schedulerName, jobGroup, jobName) {
+  getJob(jobId) {
     return new Promise(function (resolve) {
-      Axios.get(PATH + '/scheduler-names/' + schedulerName + '/job-groups/' + jobGroup + '/job-names/' + jobName)
+      Axios.get(PATH + '/scheduler-names/' + jobId.schedulerName + '/job-groups/' + jobId.jobGroup + '/job-names/' + jobId.jobName)
         .then(res => resolve(res.data))
         .catch(ErrorHandler.error)
     });
   },
 
-  deleteJob(schedulerName, jobGroup, jobName) {
+  deleteJob(jobId) {
     return new Promise(function (resolve) {
-      Axios.delete(PATH + '/scheduler-names/' + schedulerName + '/job-groups/' + jobGroup + '/job-names/' + jobName)
+      Axios.delete(PATH + '/scheduler-names/' + jobId.schedulerName + '/job-groups/' + jobId.jobGroup + '/job-names/' + jobId.jobName)
         .then(res => resolve(res.data))
         .catch(ErrorHandler.error)
     });

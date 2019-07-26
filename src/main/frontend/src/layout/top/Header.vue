@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    Header
+    Quartz Vue ADMIN
   </div>
 </template>
 

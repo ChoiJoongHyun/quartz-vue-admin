@@ -50,15 +50,45 @@
         <el-table-column prop="triggerState" label="TriggerState" sortable>
         </el-table-column>
 
+
+        <el-table-column label="Detail" width="70">
+          <template slot-scope="scope">
+            <el-button type="info"
+                       icon="el-icon-document"
+                       size="mini"
+                       @click="showDetailTrigger(scope.row)"
+                       circle></el-button>
+          </template>
+        </el-table-column>
+
       </el-table>
     </div>
 
+    <template>
+      <el-dialog title="Detail"
+                 width="35%"
+                 align="left"
+                 :visible.sync="detailDialogVisible"
+                 :before-close="handleClose">
+
+        <TriggerDetail v-if="detailDialogVisible"
+                       :trigger-id="selectedTriggerId"
+                       @submit="submitDetailForm"
+                       @cancel-form="cancelDialog">
+        </TriggerDetail>
+
+      </el-dialog>
+    </template>
   </div>
+
+
 
 </template>
 
 <script>
   import TriggerAdapter from '../adapter/triggerAdapter';
+
+  import TriggerDetail from './TriggerDetail';
 
   export default {
     name: "TriggerList",
@@ -107,22 +137,46 @@
             }
           }]
         * */
-        triggerList: []
+        triggerList: [],
+        selectedTriggerId: {},
+        detailDialogVisible: false
       }
     },
 
     methods: {
 
       setTriggerList() {
-        TriggerAdapter.getTriggerListByJobId(this.jobId.schedulerName, this.jobId.jobGroup, this.jobId.jobName)
+        TriggerAdapter.getTriggerListByJobId(this.jobId)
           .then((res) => {
             this.triggerList = res;
         });
+      },
+
+      showDetailTrigger(row) {
+        this.detailDialogVisible = true;
+        this.selectedTriggerId = row.id;
+      },
+
+      submitDetailForm() {
+        alert('submitDetailForm');
+      },
+
+      cancelDialog() {
+        this.selectedJobId = {};
+        this.detailDialogVisible = false;
+      },
+
+      handleClose(done) {
+        done();
       }
     },
 
     created() {
       this.setTriggerList();
+    },
+
+    components: {
+      TriggerDetail
     }
 
   }
