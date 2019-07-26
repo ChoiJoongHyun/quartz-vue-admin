@@ -20,6 +20,14 @@ export default {
     });
   },
 
+  putJob(jobId, form) {
+    return new Promise(function (resolve) {
+      Axios.put(PATH + '/scheduler-names/' + jobId.schedulerName + '/job-groups/' + jobId.jobGroup + '/job-names/' + jobId.jobName, form)
+        .then(res => resolve(res.data))
+        .catch(ErrorHandler.error)
+    });
+  },
+
   deleteJob(jobId) {
     return new Promise(function (resolve) {
       Axios.delete(PATH + '/scheduler-names/' + jobId.schedulerName + '/job-groups/' + jobId.jobGroup + '/job-names/' + jobId.jobName)

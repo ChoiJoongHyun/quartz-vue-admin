@@ -96,10 +96,17 @@
           cancelButtonText: 'No',
           type: 'info'
         }).then(() => {
-          //TODO 수정기능 추가.
-          alert('중비중 입니다.');
-          this.job = {};
-          this.$emit('submit');
+
+          JobAdapter.putJob(this.jobId, this.job)
+            .then((res) => {
+              this.$message({
+                message: 'success',
+                type: 'success'
+              });
+
+              this.job = {};
+              this.$emit('submit');
+            });
         });
       }
     },

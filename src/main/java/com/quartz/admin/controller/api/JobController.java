@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.controller.api;
 
+import com.quartz.admin.controller.api.request.JobDetailForm;
 import com.quartz.admin.controller.api.request.JobIdRequest;
 import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.JobService;
@@ -37,8 +38,8 @@ public class JobController {
     }
 
     @PutMapping(ApiPath.JOB_ID)
-    public JobDTO putJob(JobIdRequest jobIdRequest, @Valid @RequestBody Object o) {
-
+    public JobDTO putJob(JobIdRequest jobIdRequest, @Valid @RequestBody JobDetailForm jobDetailForm) {
+        this.jobService.updateByForm(jobIdRequest.toJobId(), jobDetailForm);
         return this.jobService.findById(jobIdRequest.toJobId());
     }
 }

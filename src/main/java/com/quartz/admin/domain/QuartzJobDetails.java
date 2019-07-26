@@ -3,15 +3,16 @@
  */
 package com.quartz.admin.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.quartz.JobDataMap;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
+@Builder
 @Entity
 @Table(name = "QRTZ_JOB_DETAILS")
 public class QuartzJobDetails implements Serializable {
@@ -40,4 +41,13 @@ public class QuartzJobDetails implements Serializable {
     @Column(name = "JOB_DATA")
     @Lob
     private JobDataMap jobData;
+
+    public QuartzJobDetails update(QuartzJobDetails updateQuartzJobDetails) {
+        this.description = updateQuartzJobDetails.getDescription();
+        this.durable = updateQuartzJobDetails.isDurable();
+        this.nonConcurrent = updateQuartzJobDetails.isNonConcurrent();
+        this.requestsRecovery = updateQuartzJobDetails.isRequestsRecovery();
+
+        return this;
+    }
 }

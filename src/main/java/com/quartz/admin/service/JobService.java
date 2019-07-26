@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.service;
 
+import com.quartz.admin.controller.api.request.JobDetailForm;
 import com.quartz.admin.domain.JobId;
 import com.quartz.admin.domain.QuartzJobDetails;
 import com.quartz.admin.exception.ServiceException;
@@ -27,14 +28,21 @@ public class JobService {
         return JobDTO.from(jobDetails);
     }
 
-    public JobDTO findById(JobId id) {
-        QuartzJobDetails jobDetails = jobDetailRepository.findById(id)
-                .orElseThrow(() -> new ServiceException("jobDetails is null jobId : " + id));
+    public JobDTO findById(JobId jobId) {
+        QuartzJobDetails jobDetails = jobDetailRepository.findById(jobId)
+                .orElseThrow(() -> new ServiceException("jobDetails is null jobId : " + jobId));
 
         return JobDTO.from(jobDetails);
     }
 
     public void deleteJob(JobId id) {
         //TODO
+    }
+
+    public void updateByForm(JobId jobId, JobDetailForm jobDetailForm) {
+        QuartzJobDetails jobDetails = jobDetailRepository.findById(jobId)
+                .orElseThrow(() -> new ServiceException("jobDetails is null jobId : " + jobId));
+
+        jobDetails.update(jobDetailForm.toQuartzJobDetails());
     }
 }
