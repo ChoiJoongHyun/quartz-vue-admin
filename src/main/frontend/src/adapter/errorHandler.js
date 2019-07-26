@@ -6,8 +6,8 @@ export default {
     if(error.response.status === 401) {
       window.location.href = window.location.origin + "/";
     } else {
-      const responseData = error.response.data;
-      MessageBox.alert(`<strong> ${responseData.globalError.message} </strong>`,responseData.globalError.code, {type: 'error', dangerouslyUseHTMLString: true});
+      const errorMessage = error.response.data;
+      MessageBox.alert(errorMessage, {type: 'error', dangerouslyUseHTMLString: true});
     }
   }
 }
