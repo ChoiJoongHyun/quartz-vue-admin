@@ -75,7 +75,7 @@
     </div>
 
     <template>
-      <el-dialog title="Detail"
+      <el-dialog title="Trigger Detail"
                  width="35%"
                  align="left"
                  :visible.sync="detailDialogVisible"

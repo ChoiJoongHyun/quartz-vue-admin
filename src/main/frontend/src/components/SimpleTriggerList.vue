@@ -33,27 +33,109 @@
         <el-table-column prop="timesTriggered" label="TimesTriggered">
         </el-table-column>
 
+        <el-table-column label="StartTime" sortable>
+          <template slot-scope="scope">
+            {{ scope.row.trigger.startTime | dateformatByLong }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="EndTime" sortable>
+          <template slot-scope="scope">
+            {{ scope.row.trigger.endTime | dateformatByLong }}
+          </template>
+        </el-table-column>
+
 
         <el-table-column prop="trigger.triggerState" label="TriggerState" sortable>
         </el-table-column>
 
+        <el-table-column label="Detail" width="70">
+          <template slot-scope="scope">
+            <el-button type="info"
+                       icon="el-icon-document"
+                       size="mini"
+                       @click="showDetailTrigger(scope.row)"
+                       circle></el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
+
+    <template>
+      <el-dialog title="Trigger Detail"
+                 width="35%"
+                 align="left"
+                 :visible.sync="detailDialogVisible"
+                 :before-close="handleClose">
+
+        <TriggerDetail v-if="detailDialogVisible"
+                       :trigger-id="selectedTriggerId">
+        </TriggerDetail>
+
+      </el-dialog>
+    </template>
   </div>
 
 </template>
 
 <script>
   import SimpleTriggerAdapter from '../adapter/simpleTriggerAdapter';
+  import TriggerDetail from './TriggerDetail';
 
   export default {
     name: "SimpleTriggerList",
 
     data() {
       return {
-
-        simpleTriggerList: []
-
+        /*
+        * [{
+            "id": {
+              "schedulerName": "scheduler-name-02",
+              "triggerGroup": "trigger-group-02",
+              "triggerName": "trigger-name-02"
+            },
+            "repeatCount": 0,
+            "repeatInterval": 0,
+            "timesTriggered": 1,
+            "trigger": {
+              "id": {
+                "schedulerName": "scheduler-name-02",
+                "triggerGroup": "trigger-group-02",
+                "triggerName": "trigger-name-02"
+              },
+              "jobName": "job-name-02",
+              "jobGroup": "job-group-02",
+              "description": "description",
+              "nextFireTime": 1530543600000,
+              "prevFireTime": -1,
+              "priority": 0,
+              "triggerState": "WAITING",
+              "triggerType": "SIMPLE",
+              "startTime": 1530543600000,
+              "endTime": 0,
+              "calendarName": null,
+              "misfireInstr": 0,
+              "jobData": null,
+              "jobDetail": {
+                "id": {
+                  "schedulerName": "scheduler-name-02",
+                  "jobName": "job-name-02",
+                  "jobGroup": "job-group-02"
+                },
+                "description": "detail-description",
+                "jobClassName": "com.zum.autoconfigure.scheduler.DefaultQuartzJob",
+                "durable": true,
+                "nonConcurrent": true,
+                "updateData": true,
+                "requestsRecovery": false,
+                "jobData": null
+              }
+            }
+          }]
+        * */
+        simpleTriggerList: [],
+        selectedTriggerId: {},
+        detailDialogVisible: false
       }
     },
     methods: {
@@ -62,6 +144,15 @@
         SimpleTriggerAdapter.getSimpleTriggerList().then((res) => {
           this.simpleTriggerList = res;
         });
+      },
+
+      showDetailTrigger(row) {
+        this.detailDialogVisible = true;
+        this.selectedTriggerId = row.id;
+      },
+
+      handleClose(done) {
+        done();
       }
     },
 
@@ -70,7 +161,7 @@
     },
 
     components: {
-
+      TriggerDetail
     }
   }
 </script>

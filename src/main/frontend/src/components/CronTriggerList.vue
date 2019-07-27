@@ -30,11 +30,6 @@
         </el-table-column>
 
 
-
-
-
-
-
         <el-table-column label="PrevFireTime" sortable>
           <template slot-scope="scope">
             {{ scope.row.trigger.prevFireTime | dateformatByLong }}
@@ -62,16 +57,39 @@
         <el-table-column prop="trigger.triggerState" label="TriggerState" sortable>
         </el-table-column>
 
+        <el-table-column label="Detail" width="70">
+          <template slot-scope="scope">
+            <el-button type="info"
+                       icon="el-icon-document"
+                       size="mini"
+                       @click="showDetailTrigger(scope.row)"
+                       circle></el-button>
+          </template>
+        </el-table-column>
+
       </el-table>
     </div>
 
+    <template>
+      <el-dialog title="Trigger Detail"
+                 width="35%"
+                 align="left"
+                 :visible.sync="detailDialogVisible"
+                 :before-close="handleClose">
+
+        <TriggerDetail v-if="detailDialogVisible"
+                       :trigger-id="selectedTriggerId">
+        </TriggerDetail>
+
+      </el-dialog>
+    </template>
   </div>
 
 </template>
 
 <script>
   import CronTriggerAdapter from '../adapter/cronTriggerAdapter';
-
+  import TriggerDetail from './TriggerDetail';
   export default {
     name: "CronTriggerList",
 
@@ -123,6 +141,8 @@
           }]
         * */
         cronTriggerList: [],
+        selectedTriggerId: {},
+        detailDialogVisible: false
       }
     },
 
@@ -132,6 +152,15 @@
         CronTriggerAdapter.getCronTriggerList().then((res) => {
           this.cronTriggerList = res;
         });
+      },
+
+      showDetailTrigger(row) {
+        this.detailDialogVisible = true;
+        this.selectedTriggerId = row.id;
+      },
+
+      handleClose(done) {
+        done();
       }
     },
 
@@ -140,7 +169,7 @@
     },
 
     components: {
-
+      TriggerDetail
     }
   }
 </script>
