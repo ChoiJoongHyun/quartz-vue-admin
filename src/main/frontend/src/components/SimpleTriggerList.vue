@@ -58,6 +58,16 @@
                        circle></el-button>
           </template>
         </el-table-column>
+
+        <el-table-column label="Delete" width="70">
+          <template slot-scope="scope">
+            <el-button type="danger"
+                       icon="el-icon-delete"
+                       size="mini"
+                       @click="deleteSimpleTrigger(scope.row)"
+                       circle></el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
 
@@ -79,6 +89,8 @@
 </template>
 
 <script>
+
+  import TriggerAdapter from '../adapter/triggerAdapter';
   import SimpleTriggerAdapter from '../adapter/simpleTriggerAdapter';
   import TriggerDetail from './TriggerDetail';
 
@@ -149,6 +161,22 @@
       showDetailTrigger(row) {
         this.detailDialogVisible = true;
         this.selectedTriggerId = row.id;
+      },
+
+      deleteSimpleTrigger(row) {
+        this.$confirm(`Delete the trigger?`, 'Delete', {
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'No',
+          type: 'warning'
+        }).then(() => {
+          TriggerAdapter.deleteTrigger(row.id).then(() => {
+            this.$message({
+              message: 'delete success',
+              type: 'success'
+            });
+            this.setSimpleTriggerList();
+          });
+        });
       },
 
       handleClose(done) {
