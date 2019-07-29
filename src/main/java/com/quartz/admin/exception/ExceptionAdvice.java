@@ -80,7 +80,7 @@ public class ExceptionAdvice {
     private static String generateFieldErrorMessage(BindingResult bindingResult) {
         return bindingResult.getFieldErrors().stream()
                 .map(FieldErrorMessage::new)
-                .map(FieldErrorMessage::getFullMessage)
+                .map(FieldErrorMessage::getPrettyFullMessage)
                 .collect(Collectors.joining());
     }
 
@@ -96,10 +96,10 @@ public class ExceptionAdvice {
             this.rejectedValue = fieldError.getRejectedValue();
         }
 
-        private String getFullMessage() {
-            return "[ Field : " + this.field + ", "
+        private String getPrettyFullMessage() {
+            return "[Field : " + this.field + ", "
                     + "Message : " + ObjectUtils.nullSafeToString(this.defaultMessage) + ", "
-                    + "RejectedValue : " + ObjectUtils.nullSafeToString(this.rejectedValue) + " ]";
+                    + "RejectedValue : " + ObjectUtils.nullSafeToString(this.rejectedValue) + "]";
         }
     }
 }
