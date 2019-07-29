@@ -50,13 +50,13 @@
 
       <el-table-column label="FiredTime">
         <template slot-scope="scope">
-          {{ scope.row.firedTime | dateformatByLong }}
+          {{ scope.row.firedTime | dateByLong }} <br> {{ scope.row.firedTime | timeByLong }}
         </template>
       </el-table-column>
 
       <el-table-column label="SchedulerTime">
         <template slot-scope="scope">
-          {{ scope.row.schedulerTime | dateformatByLong }}
+          {{ scope.row.schedulerTime | dateByLong }} <br> {{ scope.row.schedulerTime | timeByLong }}
         </template>
       </el-table-column>
 

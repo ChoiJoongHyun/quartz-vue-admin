@@ -23,7 +23,7 @@
       </el-table-column>
       <el-table-column label="LastCheckinTime">
         <template slot-scope="scope">
-          {{ scope.row.lastCheckinTime | dateformatByLong }}
+          {{ scope.row.lastCheckinTime | dateByLong }} <br> {{ scope.row.lastCheckinTime | timeByLong }}
         </template>
       </el-table-column>
       <el-table-column prop="checkinInterval"
