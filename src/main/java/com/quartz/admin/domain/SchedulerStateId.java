@@ -28,4 +28,12 @@ public class SchedulerStateId implements Serializable {
         this.schedulerName = schedulerName;
         this.instanceName = instanceName;
     }
+
+    @Override
+    public String toString() {
+        return "SchedulerStateId{" +
+                "schedulerName='" + schedulerName + '\'' +
+                ", instanceName='" + instanceName + '\'' +
+                '}';
+    }
 }

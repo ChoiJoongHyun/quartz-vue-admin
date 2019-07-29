@@ -149,9 +149,8 @@
     methods: {
 
       setCronTriggerList() {
-        CronTriggerAdapter.getCronTriggerList().then((res) => {
-          this.cronTriggerList = res;
-        });
+        CronTriggerAdapter.getCronTriggerList()
+          .then((res) => this.cronTriggerList = res);
       },
 
       showDetailTrigger(row) {

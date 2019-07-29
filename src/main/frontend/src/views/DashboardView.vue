@@ -1,12 +1,20 @@
 <template>
   <div>
-    <FiredTriggerList ref="firedTriggerList"></FiredTriggerList>
+    <div>
+      <FiredTriggerList ref="firedTriggerList"></FiredTriggerList>
+    </div>
+
+    <div>
+      <SchedulerStateList></SchedulerStateList>
+    </div>
   </div>
+
 </template>
 
 <script>
 
   import FiredTriggerList from '../components/FiredTriggerList';
+  import SchedulerStateList from '../components/SchedulerStateList';
 
   export default {
     name: "DashboardView",
@@ -30,7 +38,7 @@
     },
 
     components : {
-      FiredTriggerList
+      FiredTriggerList, SchedulerStateList
     },
 
     beforeDestroy() {
