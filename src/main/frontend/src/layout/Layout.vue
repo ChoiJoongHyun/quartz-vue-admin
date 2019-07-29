@@ -6,12 +6,12 @@
 
     <el-container>
 
-      <el-aside style="width: 210px">
+      <el-aside style="width: 175px">
         <LeftSideMenu></LeftSideMenu>
       </el-aside>
 
       <el-container>
-        <el-main>
+        <el-main style="padding-left: 10px;">
           <slot></slot>
         </el-main>
       </el-container>

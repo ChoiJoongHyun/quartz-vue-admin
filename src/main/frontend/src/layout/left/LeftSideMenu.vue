@@ -4,7 +4,8 @@
              background-color="#545c64"
              text-color="#fff"
              active-text-color="#ffd04b"
-             :collapse="isCollapse">
+             :collapse="isCollapse"
+             style="width: 170px">
 
       <template v-if="item.component" v-for="(item, index) in nav">
 
