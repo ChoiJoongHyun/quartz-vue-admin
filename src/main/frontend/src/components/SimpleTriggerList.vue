@@ -33,13 +33,13 @@
         <el-table-column prop="timesTriggered" label="TimesTriggered">
         </el-table-column>
 
-        <el-table-column label="StartTime" sortable>
+        <el-table-column label="StartTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.startTime | dateByLong }} <br> {{ scope.row.trigger.startTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="EndTime" sortable>
+        <el-table-column label="EndTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.endTime | dateByLong }} <br> {{ scope.row.trigger.endTime | timeByLong }}
           </template>

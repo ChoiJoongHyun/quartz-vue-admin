@@ -35,25 +35,25 @@
 
 
 
-        <el-table-column label="PrevFireTime" sortable>
+        <el-table-column label="PrevFireTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.prevFireTime | dateByLong }} <br> {{ scope.row.trigger.prevFireTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="NextFireTime" sortable>
+        <el-table-column label="NextFireTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.nextFireTime | dateByLong }} <br> {{ scope.row.trigger.nextFireTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="StartTime" sortable>
+        <el-table-column label="StartTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.startTime | dateByLong }} <br> {{ scope.row.trigger.startTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="EndTime" sortable>
+        <el-table-column label="EndTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.endTime | dateByLong }} <br> {{ scope.row.trigger.endTime | timeByLong }}
           </template>

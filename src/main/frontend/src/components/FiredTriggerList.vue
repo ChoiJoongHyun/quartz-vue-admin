@@ -48,13 +48,13 @@
       <el-table-column prop="instanceName" label="InstanceName">
       </el-table-column>
 
-      <el-table-column label="FiredTime">
+      <el-table-column label="FiredTime" width="120">
         <template slot-scope="scope">
           {{ scope.row.firedTime | dateByLong }} <br> {{ scope.row.firedTime | timeByLong }}
         </template>
       </el-table-column>
 
-      <el-table-column label="SchedulerTime">
+      <el-table-column label="SchedulerTime" width="120">
         <template slot-scope="scope">
           {{ scope.row.schedulerTime | dateByLong }} <br> {{ scope.row.schedulerTime | timeByLong }}
         </template>

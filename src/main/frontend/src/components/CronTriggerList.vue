@@ -23,32 +23,43 @@
         <el-table-column prop="trigger.jobName" label="JobName" sortable>
         </el-table-column>
 
-        <el-table-column prop="cronExpression" label="CronExpression">
+        <el-table-column label="CronExpression" width="200">
+          <template slot-scope="scope">
+            <div>
+              <span style="margin-right: 10px">
+                {{ scope.row.cronExpression }}
+              </span>
+              <el-button type="primary" icon="el-icon-edit" size="mini" circle></el-button>
+            </div>
+
+          </template>
+
+
         </el-table-column>
 
-        <el-table-column prop="timeZoneId" label="TimeZoneId">
+        <el-table-column prop="timeZoneId" label="TimeZoneId" width="90">
         </el-table-column>
 
 
-        <el-table-column label="PrevFireTime" sortable>
+        <el-table-column label="PrevFireTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.prevFireTime | dateByLong }} <br> {{ scope.row.trigger.prevFireTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="NextFireTime" sortable>
+        <el-table-column label="NextFireTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.nextFireTime | dateByLong }} <br> {{ scope.row.trigger.nextFireTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="StartTime" sortable>
+        <el-table-column label="StartTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.startTime | dateByLong }} <br> {{ scope.row.trigger.startTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="EndTime" sortable>
+        <el-table-column label="EndTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.trigger.endTime | dateByLong }} <br> {{ scope.row.trigger.endTime | timeByLong }}
           </template>

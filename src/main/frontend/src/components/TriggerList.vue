@@ -17,25 +17,25 @@
         <el-table-column prop="priority" label="Priority" sortable width="90">
         </el-table-column>
 
-        <el-table-column label="PrevFireTime" sortable>
+        <el-table-column label="PrevFireTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.prevFireTime | dateByLong }} <br> {{ scope.row.prevFireTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="NextFireTime" sortable>
+        <el-table-column label="NextFireTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.nextFireTime | dateByLong }} <br> {{ scope.row.nextFireTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="StartTime" sortable>
+        <el-table-column label="StartTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.startTime | dateByLong }} <br> {{ scope.row.startTime | timeByLong }}
           </template>
         </el-table-column>
 
-        <el-table-column label="EndTime" sortable>
+        <el-table-column label="EndTime" sortable width="120">
           <template slot-scope="scope">
             {{ scope.row.endTime | dateByLong }} <br> {{ scope.row.endTime | timeByLong }}
           </template>

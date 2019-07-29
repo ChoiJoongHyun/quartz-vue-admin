@@ -21,7 +21,7 @@
       <el-table-column prop="id.instanceName"
                        label="InstanceName">
       </el-table-column>
-      <el-table-column label="LastCheckinTime">
+      <el-table-column label="LastCheckinTime" width="120">
         <template slot-scope="scope">
           {{ scope.row.lastCheckinTime | dateByLong }} <br> {{ scope.row.lastCheckinTime | timeByLong }}
         </template>
