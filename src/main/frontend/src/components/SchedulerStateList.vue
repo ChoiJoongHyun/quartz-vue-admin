@@ -1,7 +1,16 @@
 <template>
 
   <div>
-    <el-tag style="display: flex" type="info">Scheduler State List</el-tag>
+    <div class="btn_area">
+      <el-tag type="info">Scheduler State List</el-tag>
+
+      <el-button style="margin-left: 20px" type="primary"
+                 title="refresh"
+                 plain
+                 icon="el-icon-refresh"
+                 size="mini"
+                 @click="setSchedulerStateList()"></el-button>
+    </div>
 
     <el-table :data="schedulerStateList"
               size="mini"
@@ -53,7 +62,6 @@
         SchedulerStateAdapter.getSchedulerStateList()
           .then((res) => this.schedulerStateList = res);
       }
-
     },
 
     created() {
@@ -63,5 +71,9 @@
 </script>
 
 <style scoped>
-
+  .btn_area{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  }
 </style>
