@@ -11,6 +11,10 @@
     <div>
       <LockList></LockList>
     </div>
+
+    <div>
+      <PausedTriggerGroupList></PausedTriggerGroupList>
+    </div>
   </div>
 
 </template>
@@ -20,6 +24,7 @@
   import FiredTriggerList from '../components/FiredTriggerList';
   import SchedulerStateList from '../components/SchedulerStateList';
   import LockList from '../components/LockList';
+  import PausedTriggerGroupList from '../components/PausedTriggerGroupList';
 
   export default {
     name: "DashboardView",
@@ -43,7 +48,7 @@
     },
 
     components : {
-      FiredTriggerList, SchedulerStateList, LockList
+      FiredTriggerList, SchedulerStateList, LockList, PausedTriggerGroupList
     },
 
     beforeDestroy() {
