@@ -3,6 +3,7 @@
  */
 package com.quartz.admin.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -16,26 +17,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
+@Slf4j
 public class ExceptionAdvice {
 
     @ControllerAdvice(annotations = RestController.class)
     @Order(Ordered.HIGHEST_PRECEDENCE + 2)
     public static class ServerExceptionAdvice {
 
-        @ExceptionHandler(ServiceException.class)
+        @ExceptionHandler({ ServiceException.class, DomainException.class })
         @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
         @ResponseBody
-        public ErrorResponse serviceException(ServiceException se) {
-            return new ErrorResponse(se.getMessage());
+        public ErrorResponse serviceException(RuntimeException e) {
+            return new ErrorResponse(e.getMessage());
         }
 
         @ExceptionHandler({Exception.class})
         @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
         @ResponseBody
-        public ErrorResponse serviceException(Exception e) {
-            return new ErrorResponse(e.getMessage());
+        public ErrorResponse exception(Exception e) {
+            log.error("ServerExceptionAdvice exception...", e);
+            return new ErrorResponse("unknown error");
         }
-
     }
 
     @ControllerAdvice(annotations = RestController.class)
