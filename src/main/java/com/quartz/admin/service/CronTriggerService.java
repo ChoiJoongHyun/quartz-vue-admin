@@ -3,8 +3,10 @@
  */
 package com.quartz.admin.service;
 
+import com.quartz.admin.controller.api.request.CronExpressionForm;
 import com.quartz.admin.domain.QuartzCronTriggers;
 import com.quartz.admin.domain.TriggerId;
+import com.quartz.admin.exception.ServiceException;
 import com.quartz.admin.repository.CronTriggerRepository;
 import com.quartz.admin.service.dto.CronTriggerDTO;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +29,18 @@ public class CronTriggerService {
 
     public void deleteById(TriggerId triggerId) {
         cronTriggerRepository.deleteById(triggerId);
+    }
+
+    public QuartzCronTriggers updateCronTriggerExpression(TriggerId triggerId, CronExpressionForm cronExpressionForm) {
+        QuartzCronTriggers cronTrigger = this.cronTriggerRepository.findById(triggerId)
+                .orElseThrow(() -> new ServiceException("trigger is null triggerId : " + triggerId));
+
+        cronTrigger.updateCronExpression(cronExpressionForm.getCronExpression());
+        return cronTrigger;
+    }
+
+    public String checkCronExpression(String cronExpression) {
+        QuartzCronTriggers.validCronExpression(cronExpression);
+        return cronExpression;
     }
 }

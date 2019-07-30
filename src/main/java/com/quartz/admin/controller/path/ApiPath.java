@@ -26,6 +26,8 @@ public class ApiPath {
     @UtilityClass
     public  class CronTriggers {
         public static final String ROOT = ApiPath.ROOT + "/cron/triggers";
+
+        public static final String CRON_EXPRESSION_CHECK = "/cron-expression-check";
     }
 
     @UtilityClass

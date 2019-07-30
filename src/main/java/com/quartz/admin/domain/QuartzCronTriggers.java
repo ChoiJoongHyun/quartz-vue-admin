@@ -3,8 +3,10 @@
  */
 package com.quartz.admin.domain;
 
+import com.quartz.admin.exception.DomainException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.quartz.CronExpression;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,4 +29,20 @@ public class QuartzCronTriggers implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @PrimaryKeyJoinColumn
     private QuartzTriggers trigger;
+
+    public QuartzCronTriggers updateCronExpression(String updateCronExpression) {
+        QuartzCronTriggers.validCronExpression(updateCronExpression);
+        this.cronExpression = updateCronExpression;
+        return this;
+    }
+
+    public static void validCronExpression(String cronExpression) {
+        if(! isValidCronExpression(cronExpression)) {
+            throw new DomainException("cron expression valid error... updateCronExpression : " + cronExpression);
+        }
+    }
+
+    public static boolean isValidCronExpression(String cronExpression) {
+        return CronExpression.isValidExpression(cronExpression);
+    }
 }

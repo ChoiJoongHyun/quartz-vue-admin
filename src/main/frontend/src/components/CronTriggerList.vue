@@ -29,17 +29,13 @@
               <span style="margin-right: 10px">
                 {{ scope.row.cronExpression }}
               </span>
-              <el-button type="primary" icon="el-icon-edit" size="mini" circle></el-button>
+              <el-button type="primary" icon="el-icon-edit" size="mini" circle @click="showUpdateCronExpression(scope.row)"></el-button>
             </div>
-
           </template>
-
-
         </el-table-column>
 
         <el-table-column prop="timeZoneId" label="TimeZoneId" width="90">
         </el-table-column>
-
 
         <el-table-column label="PrevFireTime" sortable width="120">
           <template slot-scope="scope">
@@ -96,12 +92,29 @@
                  width="35%"
                  align="left"
                  :visible.sync="detailDialogVisible"
-                 :before-close="handleClose">
+                 :before-close="cancelDialog">
 
         <TriggerDetail v-if="detailDialogVisible"
                        :trigger-id="selectedTriggerId">
         </TriggerDetail>
 
+      </el-dialog>
+    </template>
+
+    <template>
+      <el-dialog title="Update Cron Expression"
+                 :visible.sync="cronExpressionUpdateDialogVisible"
+                 width="30%"
+                 :before-close="cancelDialog">
+
+        <el-input style="width: 80%; margin-right: 15px" size="mini" placeholder="Please input"
+                  v-model="cronExpression"></el-input>
+        <el-button style="width: 15%;" size="mini" type="success" plain @click="checkCronExpression">Check</el-button>
+
+        <span slot="footer" class="dialog-footer">
+          <el-button size="mini" @click="cancelDialog">Cancel</el-button>
+          <el-button size="mini" type="primary" @click="updateCronExpression">Confirm</el-button>
+        </span>
       </el-dialog>
     </template>
   </div>
@@ -166,7 +179,9 @@
         * */
         cronTriggerList: [],
         selectedTriggerId: {},
-        detailDialogVisible: false
+        detailDialogVisible: false,
+        cronExpressionUpdateDialogVisible: false,
+        cronExpression: undefined
       }
     },
 
@@ -180,6 +195,31 @@
       showDetailTrigger(row) {
         this.detailDialogVisible = true;
         this.selectedTriggerId = row.id;
+      },
+
+      showUpdateCronExpression(row) {
+        this.cronExpressionUpdateDialogVisible = true;
+        this.selectedTriggerId = row.id;
+      },
+
+      checkCronExpression() {
+        CronTriggerAdapter.checkCronExpression(this.cronExpression).then(() => {
+          this.$message({
+            message: 'check success',
+            type: 'success'
+          });
+        });
+      },
+
+      updateCronExpression() {
+        CronTriggerAdapter.putCronExpression(this.selectedTriggerId, this.cronExpression).then(() => {
+          this.$message({
+            message: 'update success',
+            type: 'success'
+          });
+          this.setCronTriggerList();
+          this.cancelDialog();
+        });
       },
 
       deleteCronTrigger(row) {
@@ -198,8 +238,11 @@
         });
       },
 
-      handleClose(done) {
-        done();
+      cancelDialog() {
+        this.selectedTriggerId = {};
+        this.detailDialogVisible = false;
+        this.cronExpressionUpdateDialogVisible = false;
+        this.cronExpression = undefined;
       }
     },
 
