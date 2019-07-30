@@ -1,5 +1,17 @@
 <template>
   <div>
+
+    <div class="btn_area">
+      <el-tag  type="info">Quartz Job List</el-tag>
+
+      <el-button style="margin-left: 20px" type="primary"
+                 title="refresh"
+                 plain
+                 icon="el-icon-refresh"
+                 size="mini"
+                 @click="setJobList()"></el-button>
+    </div>
+
     <el-table :data="jobList"
               stripe
               size="mini"
@@ -222,6 +234,12 @@
 </script>
 
 <style scoped>
+  .btn_area{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  }
+
   .sub-table-area {
     margin-left: 50px;
     margin-right: 50px;

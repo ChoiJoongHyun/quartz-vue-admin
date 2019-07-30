@@ -2,74 +2,80 @@
 
   <div>
 
+    <div class="btn_area">
+      <el-tag  type="info">Simple Trigger List</el-tag>
 
-
-    <div>
-
-      <el-table :data="simpleTriggerList" style="width: 100%" size="mini">
-
-        <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
-        </el-table-column>
-
-        <el-table-column prop="id.triggerGroup" label="TriggerGroup" sortable>
-        </el-table-column>
-
-        <el-table-column prop="id.triggerName" label="TriggerName" sortable>
-        </el-table-column>
-
-        <el-table-column prop="trigger.jobGroup" label="JobGroup" sortable>
-        </el-table-column>
-
-        <el-table-column prop="trigger.jobName" label="JobName" sortable>
-        </el-table-column>
-
-
-        <el-table-column prop="repeatCount" label="RepeatCount">
-        </el-table-column>
-
-        <el-table-column prop="repeatInterval" label="RepeatInterval (ms)">
-        </el-table-column>
-
-        <el-table-column prop="timesTriggered" label="TimesTriggered">
-        </el-table-column>
-
-        <el-table-column label="StartTime" sortable width="120">
-          <template slot-scope="scope">
-            {{ scope.row.trigger.startTime | dateByLong }} <br> {{ scope.row.trigger.startTime | timeByLong }}
-          </template>
-        </el-table-column>
-
-        <el-table-column label="EndTime" sortable width="120">
-          <template slot-scope="scope">
-            {{ scope.row.trigger.endTime | dateByLong }} <br> {{ scope.row.trigger.endTime | timeByLong }}
-          </template>
-        </el-table-column>
-
-
-        <el-table-column prop="trigger.triggerState" label="TriggerState" sortable>
-        </el-table-column>
-
-        <el-table-column label="Detail" width="70">
-          <template slot-scope="scope">
-            <el-button type="info"
-                       icon="el-icon-document"
-                       size="mini"
-                       @click="showDetailTrigger(scope.row)"
-                       circle></el-button>
-          </template>
-        </el-table-column>
-
-        <el-table-column label="Delete" width="70">
-          <template slot-scope="scope">
-            <el-button type="danger"
-                       icon="el-icon-delete"
-                       size="mini"
-                       @click="deleteSimpleTrigger(scope.row)"
-                       circle></el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+      <el-button style="margin-left: 20px" type="primary"
+                 title="refresh"
+                 plain
+                 icon="el-icon-refresh"
+                 size="mini"
+                 @click="setSimpleTriggerList()"></el-button>
     </div>
+
+    <el-table :data="simpleTriggerList" style="width: 100%" size="mini">
+
+      <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
+      </el-table-column>
+
+      <el-table-column prop="id.triggerGroup" label="TriggerGroup" sortable>
+      </el-table-column>
+
+      <el-table-column prop="id.triggerName" label="TriggerName" sortable>
+      </el-table-column>
+
+      <el-table-column prop="trigger.jobGroup" label="JobGroup" sortable>
+      </el-table-column>
+
+      <el-table-column prop="trigger.jobName" label="JobName" sortable>
+      </el-table-column>
+
+
+      <el-table-column prop="repeatCount" label="RepeatCount">
+      </el-table-column>
+
+      <el-table-column prop="repeatInterval" label="RepeatInterval (ms)">
+      </el-table-column>
+
+      <el-table-column prop="timesTriggered" label="TimesTriggered">
+      </el-table-column>
+
+      <el-table-column label="StartTime" sortable width="120">
+        <template slot-scope="scope">
+          {{ scope.row.trigger.startTime | dateByLong }} <br> {{ scope.row.trigger.startTime | timeByLong }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="EndTime" sortable width="120">
+        <template slot-scope="scope">
+          {{ scope.row.trigger.endTime | dateByLong }} <br> {{ scope.row.trigger.endTime | timeByLong }}
+        </template>
+      </el-table-column>
+
+
+      <el-table-column prop="trigger.triggerState" label="TriggerState" sortable>
+      </el-table-column>
+
+      <el-table-column label="Detail" width="70">
+        <template slot-scope="scope">
+          <el-button type="info"
+                     icon="el-icon-document"
+                     size="mini"
+                     @click="showDetailTrigger(scope.row)"
+                     circle></el-button>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Delete" width="70">
+        <template slot-scope="scope">
+          <el-button type="danger"
+                     icon="el-icon-delete"
+                     size="mini"
+                     @click="deleteSimpleTrigger(scope.row)"
+                     circle></el-button>
+        </template>
+      </el-table-column>
+    </el-table>
 
     <template>
       <el-dialog title="Trigger Detail"
@@ -195,5 +201,9 @@
 </script>
 
 <style scoped>
-
+  .btn_area{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  }
 </style>
