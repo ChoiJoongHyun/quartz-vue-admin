@@ -33,7 +33,7 @@ public class CronTriggerController {
     }
 
     @PutMapping(ApiPath.TRIGGER_ID)
-    public QuartzCronTriggers putCronExpression(TriggerIdRequest triggerIdRequest,
+    public CronTriggerDTO putCronExpression(TriggerIdRequest triggerIdRequest,
                                                 @Valid @RequestBody CronExpressionForm cronExpressionForm) {
         return this.cronTriggerService.updateCronTriggerExpression(triggerIdRequest.toTriggerId(), cronExpressionForm);
     }

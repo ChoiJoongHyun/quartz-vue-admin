@@ -9,7 +9,7 @@ module.exports = {
   pages: {
     index: {
       entry: 'src/main.js',
-        template: '../resources/static/_index.html',
+        template: 'public/index.html',
         filename: 'index.html',
       },
   },

@@ -31,12 +31,12 @@ public class CronTriggerService {
         cronTriggerRepository.deleteById(triggerId);
     }
 
-    public QuartzCronTriggers updateCronTriggerExpression(TriggerId triggerId, CronExpressionForm cronExpressionForm) {
+    public CronTriggerDTO updateCronTriggerExpression(TriggerId triggerId, CronExpressionForm cronExpressionForm) {
         QuartzCronTriggers cronTrigger = this.cronTriggerRepository.findById(triggerId)
                 .orElseThrow(() -> new ServiceException("trigger is null triggerId : " + triggerId));
 
         cronTrigger.updateCronExpression(cronExpressionForm.getCronExpression());
-        return cronTrigger;
+        return CronTriggerDTO.from(cronTrigger);
     }
 
     public String checkCronExpression(String cronExpression) {

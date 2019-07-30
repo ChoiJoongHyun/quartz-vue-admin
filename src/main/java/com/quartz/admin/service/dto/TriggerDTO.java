@@ -34,7 +34,6 @@ public class TriggerDTO {
     private Long endTime;
     private String calendarName;
     private Long misfireInstr;
-    //private byte[] jobData;
     private JobDataMap jobData;
     private JobDTO jobDetail;
 

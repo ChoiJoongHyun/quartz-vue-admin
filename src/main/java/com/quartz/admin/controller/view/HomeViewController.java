@@ -13,7 +13,6 @@ public class HomeViewController {
 
     @GetMapping(value = { "" })
     public String index () {
-        //return "_index.html";
         return "dist/index.html";
     }
 }
