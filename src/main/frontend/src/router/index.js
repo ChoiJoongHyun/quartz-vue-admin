@@ -16,7 +16,7 @@ const router = new Router({
       component: DashboardView,
       meta: {
         title: "DashBoard",
-        icon: "el-icon-s-data"
+        icon: "el-icon-monitor"
       }
     }
     ,
@@ -26,7 +26,7 @@ const router = new Router({
       component: JobView,
       meta: {
         title: "Quartz JOB",
-        icon: "el-icon-s-data"
+        icon: "el-icon-files"
       }
     }
     ,
@@ -36,7 +36,7 @@ const router = new Router({
       component: CronTriggerView,
       meta: {
         title: "CronTrigger",
-        icon: "el-icon-s-data"
+        icon: "el-icon-time"
       }
     }
     ,
@@ -46,7 +46,7 @@ const router = new Router({
       component: SimpleTriggerView,
       meta: {
         title: "SimpleTrigger",
-        icon: "el-icon-s-data"
+        icon: "el-icon-aim"
       }
     }
     ,
