@@ -99,12 +99,12 @@
     data() {
       return {
         simpleTriggerForm: {
-          triggerName: null,
-          triggerGroup: null,
-          description: null,
+          triggerName: undefined,
+          triggerGroup: undefined,
+          description: undefined,
           priority: 0,
-          startTime: null,
-          endTime: null,
+          startTime: undefined,
+          endTime: undefined,
           repeatCount: 0,
           repeatIntervalType: 'SECOND',
           repeatInterval: 0,

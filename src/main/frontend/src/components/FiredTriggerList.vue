@@ -116,9 +116,9 @@
         }]
         */
         firedTriggerList: [],
-        refreshDateTime: null,
+        refreshDateTime: undefined,
         repeat: false,
-        intervalFnc: null
+        intervalFnc: undefined
       }
     },
 
