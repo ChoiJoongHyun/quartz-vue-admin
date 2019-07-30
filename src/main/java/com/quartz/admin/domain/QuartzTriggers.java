@@ -3,9 +3,11 @@
  */
 package com.quartz.admin.domain;
 
+import com.quartz.admin.domain.converter.JobDataMapConverter;
 import com.quartz.admin.enums.TriggerState;
 import com.quartz.admin.enums.TriggerType;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobDataMap;
 
 import javax.persistence.*;
@@ -17,6 +19,7 @@ import java.io.Serializable;
 @Builder
 @Entity
 @Table(name = "QRTZ_TRIGGERS")
+@Slf4j
 public class QuartzTriggers implements Serializable {
 
     @EmbeddedId
@@ -60,6 +63,7 @@ public class QuartzTriggers implements Serializable {
     @Column(name = "MISFIRE_INSTR")
     private Long misfireInstr;
 
+    @Convert(converter = JobDataMapConverter.class)
     @Column(name = "JOB_DATA")
     @Lob
     private JobDataMap jobData;
