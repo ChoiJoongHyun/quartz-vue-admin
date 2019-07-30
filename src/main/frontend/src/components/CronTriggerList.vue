@@ -111,6 +111,8 @@
                   v-model="cronExpression"></el-input>
         <el-button style="width: 15%;" size="mini" type="success" plain @click="checkCronExpression">Check</el-button>
 
+        <el-button type="text" @click="openCronMaker">http://www.cronmaker.com/</el-button>
+
         <span slot="footer" class="dialog-footer">
           <el-button size="mini" @click="cancelDialog">Cancel</el-button>
           <el-button size="mini" type="primary" @click="updateCronExpression">Confirm</el-button>
@@ -243,6 +245,11 @@
         this.detailDialogVisible = false;
         this.cronExpressionUpdateDialogVisible = false;
         this.cronExpression = undefined;
+      },
+
+      openCronMaker() {
+        const url = 'http://www.cronmaker.com/';
+        window.open(url, '_blank');
       }
     },
 
