@@ -12,6 +12,10 @@ export default {
     });
   },
 
+  /**
+   * @param jobId {object}
+   * @param form {object}
+   * */
   postSimpleTrigger(jobId, form) {
     return new Promise(function (resolve) {
       Axios.post(PATH + '/scheduler-names/' + jobId.schedulerName + '/job-groups/' + jobId.jobGroup + '/job-names/' + jobId.jobName, form)
