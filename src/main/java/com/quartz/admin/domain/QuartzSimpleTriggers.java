@@ -14,7 +14,14 @@ import java.io.Serializable;
 @Builder
 @Entity
 @Table(name = "QRTZ_SIMPLE_TRIGGERS")
+@NamedEntityGraph(
+        name = QuartzSimpleTriggers.NAMED_ENTITY_GRAPH_KEY,
+        attributeNodes = @NamedAttributeNode(value = "trigger", subgraph = "trigger.jobDetails"),
+        subgraphs = @NamedSubgraph(name = "trigger.jobDetails", attributeNodes = @NamedAttributeNode(value = "jobDetails"))
+)
 public class QuartzSimpleTriggers implements Serializable {
+
+    public static final String NAMED_ENTITY_GRAPH_KEY = "QRTZ_SIMPLE_TRIGGERS.FETCH";
 
     @EmbeddedId
     private TriggerId id;

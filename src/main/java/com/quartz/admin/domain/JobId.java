@@ -21,11 +21,11 @@ public class JobId implements Serializable {
     @Column(name = "SCHED_NAME", nullable = false, length = 120)
     private String schedulerName;
 
-    @Column(name = "JOB_NAME", nullable = false, length = 200)
-    private String jobName;
-
     @Column(name = "JOB_GROUP", nullable = false, length = 200)
     private String jobGroup;
+
+    @Column(name = "JOB_NAME", nullable = false, length = 200)
+    private String jobName;
 
     public JobId(String schedulerName, String jobGroup, String jobName) {
         this.schedulerName = schedulerName;

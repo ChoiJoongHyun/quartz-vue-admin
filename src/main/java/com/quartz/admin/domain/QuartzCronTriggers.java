@@ -3,10 +3,8 @@
  */
 package com.quartz.admin.domain;
 
-import com.quartz.admin.exception.DomainException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.quartz.CronExpression;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +13,14 @@ import java.io.Serializable;
 @Getter
 @Entity
 @Table(name = "QRTZ_CRON_TRIGGERS")
+@NamedEntityGraph(
+        name = QuartzCronTriggers.NAMED_ENTITY_GRAPH_KEY,
+        attributeNodes = @NamedAttributeNode(value = "trigger", subgraph = "trigger.jobDetails"),
+        subgraphs = @NamedSubgraph(name = "trigger.jobDetails", attributeNodes = @NamedAttributeNode(value = "jobDetails"))
+)
 public class QuartzCronTriggers implements Serializable {
+
+    public static final String NAMED_ENTITY_GRAPH_KEY = "QRTZ_CRON_TRIGGERS.FETCH";
 
     @EmbeddedId
     private TriggerId id;
@@ -29,20 +34,4 @@ public class QuartzCronTriggers implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @PrimaryKeyJoinColumn
     private QuartzTriggers trigger;
-
-    public QuartzCronTriggers updateCronExpression(String updateCronExpression) {
-        QuartzCronTriggers.validCronExpression(updateCronExpression);
-        this.cronExpression = updateCronExpression;
-        return this;
-    }
-
-    public static void validCronExpression(String cronExpression) {
-        if(! isValidCronExpression(cronExpression)) {
-            throw new DomainException("cron expression valid error... updateCronExpression : " + cronExpression);
-        }
-    }
-
-    public static boolean isValidCronExpression(String cronExpression) {
-        return CronExpression.isValidExpression(cronExpression);
-    }
 }
