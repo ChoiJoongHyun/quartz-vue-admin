@@ -8,15 +8,15 @@
         <el-button v-if="repeat"
                    title="auto refresh stop"
                    type="primary"
-                   icon="el-icon-minus"
+                   icon="el-icon-loading"
                    size="mini"
-                   @click="repeatOff"></el-button>
+                   @click="repeatOff"> repeat off </el-button>
         <el-button v-else
                    title="auto refresh start"
                    type="primary"
                    icon="el-icon-caret-right"
                    size="mini"
-                   @click="repeatOn"></el-button>
+                   @click="repeatOn"> repeat on </el-button>
       </div>
       <div style="margin-left: 10px">
         <el-tag type="info">refresh date time : {{refreshDateTime | dateformatByDate}}</el-tag>
@@ -122,22 +122,13 @@
       }
     },
 
-    watch:{
-      $route (to, from){
-
-        /*if(from.name ==='DashboardView') {
-          this.repeatOff();
-        }*/
-      }
-    },
-
     methods: {
 
       repeatOn() {
         this.repeat = true;
         this.intervalFnc = setInterval(() => {
           this.setFiredTriggerList();
-        }, 3000);
+        }, 2000);
       },
 
       repeatOff() {
