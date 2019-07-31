@@ -38,4 +38,17 @@ spring:
       ## pretty-print the sql
       hibernate.format_sql: true
 
-
+---
+spring:
+  profiles: prod
+  datasource:
+    url:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username:
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      show-sql: true
+      properties:
+        hibernate.format_sql: true
