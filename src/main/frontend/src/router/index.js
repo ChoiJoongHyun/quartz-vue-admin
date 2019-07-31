@@ -5,6 +5,7 @@ import DashboardView from '../views/DashboardView';
 import CronTriggerView from '../views/CronTriggerView';
 import SimpleTriggerView from '../views/SimpleTriggerView';
 import JobView from '../views/JobView';
+import InfoView from '../views/InfoView';
 
 Vue.use(Router);
 
@@ -47,6 +48,16 @@ const router = new Router({
       meta: {
         title: "SimpleTrigger",
         icon: "el-icon-aim"
+      }
+    }
+    ,
+    {
+      path: "/info",
+      name: "InfoView",
+      component: InfoView,
+      meta: {
+        title: "Info",
+        icon: "el-icon-info"
       }
     }
     ,

@@ -64,7 +64,7 @@
   .el-menu-vertical:not(.el-menu--collapse) {
     text-align: left;
     width: 200px;
-    min-height: 280px;
+    min-height: 350px;
   }
 
 </style>
