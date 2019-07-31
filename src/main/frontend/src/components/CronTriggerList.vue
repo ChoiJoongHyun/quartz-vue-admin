@@ -12,7 +12,10 @@
                  @click="setCronTriggerList()"></el-button>
     </div>
 
-    <el-table :data="cronTriggerList" style="width: 100%" size="mini">
+    <el-table style="width: 100%"
+              :data="cronTriggerList"
+              v-loading="loading"
+              size="mini">
 
       <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
       </el-table-column>
@@ -161,15 +164,21 @@
         selectedTriggerId: {},
         detailDialogVisible: false,
         cronExpressionUpdateDialogVisible: false,
-        cronExpression: undefined
+        cronExpression: undefined,
+        loading: false
       }
     },
 
     methods: {
 
       setCronTriggerList() {
-        CronTriggerAdapter.getCronTriggerList()
-          .then((res) => this.cronTriggerList = res);
+        this.loading = true;
+        CronTriggerAdapter.getCronTriggerList().then((res) => {
+          this.cronTriggerList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
+        });
       },
 
       showDetailTrigger(row) {

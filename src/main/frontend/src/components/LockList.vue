@@ -11,9 +11,10 @@
                  @click="setLockList()"></el-button>
     </div>
 
-    <el-table :data="lockList"
-              size="mini"
-              style="width: 100%">
+    <el-table style="width: 100%"
+              :data="lockList"
+              v-loading="loading"
+              size="mini">
       <el-table-column prop="schedulerName"
                        label="SchedulerName">
       </el-table-column>
@@ -38,14 +39,20 @@
             "lockName": "STATE_ACCESS"
           }]
         * */
-        lockList: []
+        lockList: [],
+        loading: false
       }
     },
 
     methods: {
       setLockList() {
-        LockAdapter.getLockList()
-          .then((res) => this.lockList = res);
+        this.loading = true;
+        LockAdapter.getLockList().then((res) => {
+          this.lockList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
+        });
       }
     },
 

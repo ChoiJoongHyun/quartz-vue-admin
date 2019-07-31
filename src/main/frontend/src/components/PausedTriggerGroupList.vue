@@ -11,9 +11,10 @@
                  @click="setPausedTriggerGroupList()"></el-button>
     </div>
 
-    <el-table :data="pausedTriggerGroupList"
-              size="mini"
-              style="width: 100%">
+    <el-table style="width: 100%"
+              :data="pausedTriggerGroupList"
+              v-loading="loading"
+              size="mini">
       <el-table-column prop="schedulerName"
                        label="SchedulerName">
       </el-table-column>
@@ -38,14 +39,20 @@
             "triggerGroup": "trigger-group-01"
           }]
         * */
-        pausedTriggerGroupList: []
+        pausedTriggerGroupList: [],
+        loading: false
       }
     },
 
     methods: {
       setPausedTriggerGroupList() {
-        PausedTriggerGroupAdapter.getPausedTriggerGroupList()
-          .then((res) => this.pausedTriggerGroupList = res);
+        this.loading = true;
+        PausedTriggerGroupAdapter.getPausedTriggerGroupList().then((res) => {
+          this.pausedTriggerGroupList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
+        });
       }
     },
 

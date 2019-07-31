@@ -2,7 +2,10 @@
 
   <div>
     <div>
-      <el-table :data="blobTriggerList" style="width: 100%" size="mini">
+      <el-table style="width: 100%"
+                :data="blobTriggerList"
+                v-loading="loading"
+                size="mini">
 
         <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
         </el-table-column>
@@ -65,15 +68,20 @@
 
     data() {
       return {
-        blobTriggerList: []
+        blobTriggerList: [],
+        loading : false
       }
     },
 
     methods: {
 
       setBlobTriggerList() {
+        this.loading = true;
         BlobTriggerAdapter.getBlobTriggerList().then((res) => {
           this.blobTriggerList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
         });
       }
     },

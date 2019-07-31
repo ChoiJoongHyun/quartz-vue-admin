@@ -12,7 +12,10 @@
     </div>
 
     <div>
-      <el-table :data="triggerList" style="width: 100%" size="mini">
+      <el-table style="width: 100%"
+                :data="triggerList"
+                v-loading="loading"
+                size="mini">
 
         <el-table-column prop="id.triggerGroup" label="TriggerGroup" sortable>
         </el-table-column>
@@ -148,16 +151,20 @@
         * */
         triggerList: [],
         selectedTriggerId: {},
-        detailDialogVisible: false
+        detailDialogVisible: false,
+        loading: false
       }
     },
 
     methods: {
 
       setTriggerList() {
-        TriggerAdapter.getTriggerListByJobId(this.jobId)
-          .then((res) => {
-            this.triggerList = res;
+        this.loading = true;
+        TriggerAdapter.getTriggerListByJobId(this.jobId).then((res) => {
+          this.triggerList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
         });
       },
 

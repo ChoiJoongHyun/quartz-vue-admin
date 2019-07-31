@@ -11,8 +11,10 @@
                  @click="setSimpleTriggerList()"></el-button>
     </div>
 
-    <el-table :data="simpleTriggerList" style="width: 100%" size="mini">
-
+    <el-table style="width: 100%"
+              :data="simpleTriggerList"
+              v-loading="loading"
+              size="mini">
       <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
       </el-table-column>
 
@@ -149,14 +151,19 @@
         * */
         simpleTriggerList: [],
         selectedTriggerId: {},
-        detailDialogVisible: false
+        detailDialogVisible: false,
+        loading: false
       }
     },
     methods: {
 
       setSimpleTriggerList() {
+        this.loading = true;
         SimpleTriggerAdapter.getSimpleTriggerList().then((res) => {
           this.simpleTriggerList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
         });
       },
 

@@ -11,9 +11,10 @@
                  @click="setSchedulerStateList()"></el-button>
     </div>
 
-    <el-table :data="schedulerStateList"
-              size="mini"
-              style="width: 100%">
+    <el-table style="width: 100%"
+              :data="schedulerStateList"
+              v-loading="loading"
+              size="mini">
       <el-table-column prop="id.schedulerName"
                        label="SchedulerName">
       </el-table-column>
@@ -51,14 +52,20 @@
             "checkinInterval": 20000
           }]
         * */
-        schedulerStateList: []
+        schedulerStateList: [],
+        loading: false
       }
     },
 
     methods: {
       setSchedulerStateList() {
-        SchedulerStateAdapter.getSchedulerStateList()
-          .then((res) => this.schedulerStateList = res);
+        this.loading = true;
+        SchedulerStateAdapter.getSchedulerStateList().then((res) => {
+          this.schedulerStateList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
+        });
       }
     },
 

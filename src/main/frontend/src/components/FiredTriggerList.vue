@@ -31,7 +31,10 @@
       </div>
     </div>
 
-    <el-table size="mini" :data="firedTriggerList" style="width: 100%">
+    <el-table style="width: 100%"
+              size="mini"
+              :data="firedTriggerList"
+              v-loading="loading" >
 
       <el-table-column prop="id.schedulerName" label="SchedulerName">
       </el-table-column>
@@ -118,7 +121,8 @@
         firedTriggerList: [],
         refreshDateTime: undefined,
         repeat: false,
-        intervalFnc: undefined
+        intervalFnc: undefined,
+        loading: false
       }
     },
 
@@ -137,9 +141,13 @@
       },
 
       setFiredTriggerList() {
+        this.loading = true;
         FiredTriggerAdapter.getFiredTriggerList().then((res) => {
           this.refreshDateTime = new Date();
           this.firedTriggerList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
         });
       },
     },

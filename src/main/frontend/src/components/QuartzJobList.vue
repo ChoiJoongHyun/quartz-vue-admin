@@ -11,11 +11,11 @@
                  @click="setJobList()"></el-button>
     </div>
 
-    <el-table :data="jobList"
+    <el-table style="width: 100%"
+              :data="jobList"
+              v-loading="loading"
               stripe
-              size="mini"
-              style="width: 100%">
-
+              size="mini">
       <el-table-column type="expand">
         <template slot-scope="props">
           <div class="sub-table-area">
@@ -153,15 +153,20 @@
         jobList: [],
         selectedJobId: {},
         detailDialogVisible: false,
-        addSimpleTriggerDialogVisible: false
+        addSimpleTriggerDialogVisible: false,
+        loading: false
 
       }
     },
 
     methods: {
       setJobList() {
+        this.loading = true;
         JobAdapter.getJobList().then((res) => {
           this.jobList = res;
+          this.loading = false;
+        }).catch(reason => {
+          this.loading = false;
         });
       },
 
