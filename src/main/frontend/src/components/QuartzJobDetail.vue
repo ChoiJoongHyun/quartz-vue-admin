@@ -15,16 +15,16 @@
       </el-form-item>
 
       <el-form-item label="Durable">
-        <el-checkbox v-model="job.durable"></el-checkbox>
+        <el-checkbox v-model="job.durable" disabled></el-checkbox>
       </el-form-item>
       <el-form-item label="NonConcurrent">
-        <el-checkbox v-model="job.nonConcurrent"></el-checkbox>
+        <el-checkbox v-model="job.nonConcurrent" disabled></el-checkbox>
       </el-form-item>
       <el-form-item label="UpdateData">
         <el-checkbox v-model="job.updateData" disabled></el-checkbox>
       </el-form-item>
       <el-form-item label="RequestsRecovery">
-        <el-checkbox v-model="job.requestsRecovery"></el-checkbox>
+        <el-checkbox v-model="job.requestsRecovery" disabled></el-checkbox>
       </el-form-item>
 
 
@@ -34,19 +34,11 @@
       </el-form-item>
 
       <el-form-item label="Description">
-        <el-input type="textarea" v-model="job.description"></el-input>
+        <el-input type="textarea" v-model="job.description" disabled></el-input>
       </el-form-item>
 
       <el-form-item label="JobData">
-        <el-input type="textarea" v-model="job.jobData" disabled ></el-input>
-      </el-form-item>
-
-      <el-form-item>
-
-        <el-button type="primary" @click="onSubmit">Modify</el-button>
-
-        <el-button @click="cancelForm">Cancel</el-button>
-
+        <pre>{{job.jobData}}</pre>
       </el-form-item>
     </el-form>
 
@@ -81,32 +73,6 @@
         JobAdapter.getJob(this.jobId)
           .then((res) => {
             this.job = res;
-        });
-      },
-
-      cancelForm() {
-        this.job = {};
-        this.$emit('cancel-form');
-      },
-
-      onSubmit() {
-
-        this.$confirm(`Do you want to modify it?`, 'Modify', {
-          confirmButtonText: 'Yes',
-          cancelButtonText: 'No',
-          type: 'info'
-        }).then(() => {
-
-          JobAdapter.putJob(this.jobId, this.job)
-            .then((res) => {
-              this.$message({
-                message: 'success',
-                type: 'success'
-              });
-
-              this.job = {};
-              this.$emit('submit');
-            });
         });
       }
     },

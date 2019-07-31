@@ -3,15 +3,16 @@
  */
 package com.quartz.admin.controller.api;
 
-import com.quartz.admin.controller.api.request.JobDetailForm;
 import com.quartz.admin.controller.api.request.JobIdRequest;
 import com.quartz.admin.controller.path.ApiPath;
 import com.quartz.admin.service.JobService;
 import com.quartz.admin.service.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,11 +36,5 @@ public class JobController {
     public List<JobDTO> deleteJob(JobIdRequest jobIdRequest) {
         jobService.deleteJob(jobIdRequest.toJobId());
         return this.jobService.findAll();
-    }
-
-    @PutMapping(ApiPath.JOB_ID)
-    public JobDTO putJob(JobIdRequest jobIdRequest, @Valid @RequestBody JobDetailForm jobDetailForm) {
-        this.jobService.updateByForm(jobIdRequest.toJobId(), jobDetailForm);
-        return this.jobService.findById(jobIdRequest.toJobId());
     }
 }

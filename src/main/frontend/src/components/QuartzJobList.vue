@@ -76,8 +76,8 @@
 
       <el-table-column label="Detail" width="70">
         <template slot-scope="scope">
-          <el-button type="primary"
-                     icon="el-icon-edit"
+          <el-button type="info"
+                     icon="el-icon-document"
                      size="mini"
                      circle
                      @click="showDetailJob(scope.row)"
@@ -102,12 +102,10 @@
                  width="35%"
                  align="left"
                  :visible.sync="detailDialogVisible"
-                 :before-close="handleClose">
+                 :before-close="cancelDialog">
 
         <QuartzJobDetail v-if="detailDialogVisible"
-                         :job-id="selectedJobId"
-                         @submit="submitDetailForm"
-                         @cancel-form="cancelDialog"></QuartzJobDetail>
+                         :job-id="selectedJobId"></QuartzJobDetail>
 
       </el-dialog>
     </template>
@@ -117,7 +115,7 @@
                  width="35%"
                  align="left"
                  :visible.sync="addSimpleTriggerDialogVisible"
-                 :before-close="handleClose">
+                 :before-close="cancelDialog">
 
         <SimpleTriggerAdd v-if="addSimpleTriggerDialogVisible"
                          :job-id="selectedJobId"
@@ -216,10 +214,6 @@
         alert("submitSimpleTriggerForm");
         this.selectedJobId = {};
         this.addSimpleTriggerDialogVisible = false;
-      },
-
-      handleClose(done) {
-        done();
       }
     },
 
