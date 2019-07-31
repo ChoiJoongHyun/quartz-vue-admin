@@ -60,10 +60,11 @@
 </script>
 
 <style scoped>
+
   .el-menu-vertical:not(.el-menu--collapse) {
     text-align: left;
     width: 200px;
-    min-height: 400px;
+    min-height: 280px;
   }
 
 </style>

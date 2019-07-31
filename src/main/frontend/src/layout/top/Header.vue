@@ -20,6 +20,5 @@
     position: absolute;
     top: 0;
     left: 0;
-    margin: 0 auto;
   }
 </style>
