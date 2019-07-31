@@ -33,7 +33,7 @@ public class TriggerDTO {
     private Long startTime;
     private Long endTime;
     private String calendarName;
-    private Long misfireInstr;
+    private Integer misfireInstr;
     private JobDataMap jobData;
     private JobDTO jobDetail;
 

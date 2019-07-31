@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.quartz.JobDataMap;
+import org.quartz.Trigger;
 import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotBlank;
@@ -77,14 +78,16 @@ public class SimpleTriggerAddForm {
                 .priority(this.priority)
                 .triggerState(TriggerState.WAITING)
                 .triggerType(TriggerType.SIMPLE)
+                .misfireInstr(Trigger.MISFIRE_INSTRUCTION_SMART_POLICY)
                 .startTime(LocalDateTimeConverter.toLongDefaultNow(this.startTime))
-                .endTime(LocalDateTimeConverter.toLong(this.startTime))
+                .nextFireTime(LocalDateTimeConverter.toLongDefaultNow(this.startTime))  //nextFireTime is the same as startTime
+                .endTime(LocalDateTimeConverter.toLong(this.endTime))
                 .jobData(getJobDataMap())
                 .build();
 
         QuartzSimpleTriggers simpleTrigger = QuartzSimpleTriggers.builder()
                 .id(trigger.getId())
-                .repeatCount(this.repeatCount)
+                .repeatCount(this.repeatCount - 1)
                 .repeatInterval(this.repeatIntervalType.getMillisecond(this.repeatInterval))
                 .trigger(trigger)
                 .build();

@@ -19,6 +19,10 @@ public class QuartzSimpleTriggers implements Serializable {
     @EmbeddedId
     private TriggerId id;
 
+    /**
+     * repeatCount = 0 -> one execution
+     * repeatCount = 1 -> two execution
+     * */
     @Column(name = "REPEAT_COUNT", nullable = false)
     private long repeatCount;
 
@@ -31,4 +35,8 @@ public class QuartzSimpleTriggers implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @PrimaryKeyJoinColumn
     private QuartzTriggers trigger;
+
+    public long getHumanReadableRepeatCount() {
+        return repeatCount + 1;
+    }
 }

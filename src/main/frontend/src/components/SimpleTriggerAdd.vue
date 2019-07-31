@@ -33,7 +33,7 @@
       </el-form-item>
 
       <el-form-item label="RepeatCount">
-        <el-input-number v-model="simpleTriggerForm.repeatCount" :min="0"></el-input-number>
+        <el-input-number v-model="simpleTriggerForm.repeatCount" :min="1"></el-input-number>
       </el-form-item>
 
       <el-form-item label="RepeatInterval">

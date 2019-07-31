@@ -61,7 +61,7 @@ public class QuartzTriggers implements Serializable {
     private String calendarName;
 
     @Column(name = "MISFIRE_INSTR")
-    private Long misfireInstr;
+    private Integer misfireInstr;
 
     @Convert(converter = JobDataMapConverter.class)
     @Column(name = "JOB_DATA")

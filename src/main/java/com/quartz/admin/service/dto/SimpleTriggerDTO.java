@@ -19,9 +19,9 @@ import java.util.stream.Collectors;
 public class SimpleTriggerDTO {
 
     private TriggerId id;
-    private Long repeatCount;
-    private Long repeatInterval;
-    private Long timesTriggered;
+    private long repeatCount;
+    private long repeatInterval;
+    private long timesTriggered;
 
     private TriggerDTO trigger;
 
@@ -31,7 +31,7 @@ public class SimpleTriggerDTO {
 
         return SimpleTriggerDTO.builder()
                 .id(simpleTriggers.getId())
-                .repeatCount(simpleTriggers.getRepeatCount())
+                .repeatCount(simpleTriggers.getHumanReadableRepeatCount())
                 .repeatInterval(simpleTriggers.getRepeatInterval())
                 .timesTriggered(simpleTriggers.getTimesTriggered())
                 .trigger(triggerDTO)
