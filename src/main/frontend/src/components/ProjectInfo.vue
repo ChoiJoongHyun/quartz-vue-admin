@@ -7,6 +7,9 @@
         <h5>
           It is an application that monitors the scheduler developed by <el-button type="text" @click="openQuartzScheduler">Quartz Scheduler Library</el-button>.
         </h5>
+        <h5>
+          It is available by registering SimpleTrigger to QuartzJob.
+        </h5>
       </div>
     </div>
 
