@@ -11,18 +11,19 @@ import com.quartz.admin.domain.TriggerId;
 import com.quartz.admin.enums.RepeatIntervalType;
 import com.quartz.admin.enums.TriggerState;
 import com.quartz.admin.enums.TriggerType;
+import com.quartz.admin.util.JobDataMapConverter;
 import com.quartz.admin.util.LocalDateTimeConverter;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.quartz.JobDataMap;
 import org.quartz.Trigger;
 import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -47,6 +48,8 @@ public class SimpleTriggerAddForm {
     private long repeatInterval;
     private List<JobData> jobDataList = new ArrayList<>();
 
+    private Map<String, String> jobDataMap = new HashMap<>();
+
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     @Setter
     @Getter
@@ -54,17 +57,15 @@ public class SimpleTriggerAddForm {
         private String key;
         private String value;
 
+        public static Map<String, String> toMap(List<JobData> jobDataList) {
+            return jobDataList.stream()
+                    .filter(JobData::isValid)
+                    .collect(Collectors.toMap(JobData::getKey, JobData::getValue));
+        }
+
         boolean isValid() {
             return ! StringUtils.isEmpty(this.key) && ! StringUtils.isEmpty(this.value);
         }
-    }
-
-    private JobDataMap getJobDataMap() {
-        Map<String, String> jobDataMap = this.jobDataList.stream()
-                .filter(JobData::isValid)
-                .collect(Collectors.toMap(JobData::getKey, JobData::getValue));
-
-        return new JobDataMap(jobDataMap);
     }
 
     public QuartzSimpleTriggers toQuartzSimpleTriggers(JobId jobId) {
@@ -80,7 +81,7 @@ public class SimpleTriggerAddForm {
                 .startTime(LocalDateTimeConverter.toLongDefaultNow(this.startTime))
                 .nextFireTime(LocalDateTimeConverter.toLongDefaultNow(this.startTime))  //nextFireTime is the same as startTime
                 .endTime(LocalDateTimeConverter.toLongDefaultZero(this.endTime))
-                .jobData(getJobDataMap())
+                .jobData(JobDataMapConverter.toJobDataMap(JobData.toMap(this.jobDataList)))
                 .build();
 
         QuartzSimpleTriggers simpleTrigger = QuartzSimpleTriggers.builder()
