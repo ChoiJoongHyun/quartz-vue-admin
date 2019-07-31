@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    Quartz Vue ADMIN
+    Quartz Scheduler Monitoring
   </div>
 </template>
 
