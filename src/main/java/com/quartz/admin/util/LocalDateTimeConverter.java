@@ -11,8 +11,8 @@ import java.time.ZoneId;
 @UtilityClass
 public class LocalDateTimeConverter {
 
-    public static Long toLong(LocalDateTime localDateTime) {
-        return localDateTime == null ? null : localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    public static long toLongDefaultZero(LocalDateTime localDateTime) {
+        return localDateTime == null ? 0L : localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     public static Long toLongDefaultNow(LocalDateTime localDateTime) {

@@ -48,7 +48,7 @@ public class SimpleTriggerAddForm {
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     @Setter
     @Getter
-    public static class JobData{
+    public static class JobData {
         private String key;
         private String value;
 
@@ -81,7 +81,7 @@ public class SimpleTriggerAddForm {
                 .misfireInstr(Trigger.MISFIRE_INSTRUCTION_SMART_POLICY)
                 .startTime(LocalDateTimeConverter.toLongDefaultNow(this.startTime))
                 .nextFireTime(LocalDateTimeConverter.toLongDefaultNow(this.startTime))  //nextFireTime is the same as startTime
-                .endTime(LocalDateTimeConverter.toLong(this.endTime))
+                .endTime(LocalDateTimeConverter.toLongDefaultZero(this.endTime))
                 .jobData(getJobDataMap())
                 .build();
 
