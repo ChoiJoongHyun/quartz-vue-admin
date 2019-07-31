@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <div class="btn_area">
       <el-tag type="info">Scheduler State List</el-tag>
@@ -31,7 +30,6 @@
       </el-table-column>
     </el-table>
   </div>
-
 </template>
 
 <script>

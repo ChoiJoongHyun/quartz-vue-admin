@@ -1,7 +1,5 @@
 <template>
-
   <QuartzJobList></QuartzJobList>
-
 </template>
 
 <script>
@@ -17,9 +15,4 @@
 </script>
 
 <style scoped>
-
-  .sub-table-area {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
 </style>

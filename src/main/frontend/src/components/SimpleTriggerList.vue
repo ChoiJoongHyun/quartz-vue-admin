@@ -1,7 +1,5 @@
 <template>
-
   <div>
-
     <div class="btn_area">
       <el-tag  type="info">Simple Trigger List</el-tag>
 
@@ -52,7 +50,6 @@
         </template>
       </el-table-column>
 
-
       <el-table-column prop="trigger.triggerState" label="TriggerState" sortable>
       </el-table-column>
 
@@ -91,7 +88,6 @@
       </el-dialog>
     </template>
   </div>
-
 </template>
 
 <script>

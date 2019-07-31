@@ -4,9 +4,11 @@
       <el-form-item label="SchedulerName">
         <el-input v-model="trigger.id.schedulerName" disabled></el-input>
       </el-form-item>
+
       <el-form-item label="TriggerGroup">
         <el-input v-model="trigger.id.triggerGroup" disabled></el-input>
       </el-form-item>
+
       <el-form-item label="TriggerName">
         <el-input v-model="trigger.id.triggerName" disabled></el-input>
       </el-form-item>
@@ -14,6 +16,7 @@
       <el-form-item label="JobGroup">
         <el-input v-model="trigger.jobGroup" disabled></el-input>
       </el-form-item>
+
       <el-form-item label="JobName">
         <el-input v-model="trigger.jobName" disabled></el-input>
       </el-form-item>
@@ -23,16 +26,19 @@
           {{ trigger.startTime | dateformatByLong }}
         </span>
       </el-form-item>
+
       <el-form-item label="EndTime">
         <span class="trigger-detail-value">
           {{ trigger.endTime | dateformatByLong }}
         </span>
       </el-form-item>
+
       <el-form-item label="PrevFireTime">
         <span class="trigger-detail-value">
           {{ trigger.prevFireTime | dateformatByLong }}
         </span>
       </el-form-item>
+
       <el-form-item label="NextFireTime">
         <span class="trigger-detail-value">
           {{ trigger.nextFireTime | dateformatByLong }}
@@ -46,6 +52,7 @@
       <el-form-item label="TriggerState">
         <el-input v-model="trigger.triggerState" disabled></el-input>
       </el-form-item>
+
       <el-form-item label="TriggerType">
         <el-input v-model="trigger.triggerType" disabled></el-input>
       </el-form-item>

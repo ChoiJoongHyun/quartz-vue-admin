@@ -2,10 +2,6 @@
 
   <div>
     <div>
-      <!--TODO refresh btn-->
-    </div>
-
-    <div>
       <el-table :data="blobTriggerList" style="width: 100%" size="mini">
 
         <el-table-column prop="id.schedulerName" label="SchedulerName" sortable>
@@ -22,18 +18,6 @@
 
         <el-table-column prop="trigger.jobName" label="JobName" sortable>
         </el-table-column>
-
-        <!--<el-table-column prop="cronExpression" label="CronExpression">
-        </el-table-column>
-
-        <el-table-column prop="timeZoneId" label="TimeZoneId">
-        </el-table-column>-->
-
-
-
-
-
-
 
         <el-table-column label="PrevFireTime" sortable width="120">
           <template slot-scope="scope">

@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <el-form ref="simpleTriggerFormRules" :rules="simpleTriggerFormRules" :model="simpleTriggerForm" size="mini" label-width="140px">
 
@@ -80,7 +79,6 @@
       </el-form-item>
     </el-form>
   </div>
-
 </template>
 
 <script>
@@ -173,10 +171,6 @@
 
         });
       }
-    },
-
-    created() {
-
     }
   }
 </script>

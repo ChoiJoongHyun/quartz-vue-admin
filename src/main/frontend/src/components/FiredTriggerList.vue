@@ -144,10 +144,6 @@
       },
     },
 
-    components : {
-
-    },
-
     beforeDestroy() {
       this.repeatOff()
     },

@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="btn_area">
       <el-tag  type="info">Quartz Job List</el-tag>
 
@@ -94,7 +93,6 @@
                      circle></el-button>
         </template>
       </el-table-column>
-
     </el-table>
 
     <template>
@@ -125,8 +123,6 @@
       </el-dialog>
     </template>
   </div>
-
-
 </template>
 
 <script>

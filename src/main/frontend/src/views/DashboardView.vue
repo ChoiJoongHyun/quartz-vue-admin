@@ -43,20 +43,8 @@
       }
     },
 
-    methods: {
-
-    },
-
     components : {
       FiredTriggerList, SchedulerStateList, LockList, PausedTriggerGroupList
-    },
-
-    beforeDestroy() {
-
-    },
-
-    created() {
-
     }
   }
 </script>

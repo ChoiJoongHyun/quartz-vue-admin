@@ -1,10 +1,5 @@
 <template>
-
   <div>
-    <div>
-      <!--TODO refresh btn-->
-    </div>
-
     <div>
       <el-table :data="triggerList" style="width: 100%" size="mini">
 
@@ -50,7 +45,6 @@
         <el-table-column prop="triggerState" label="TriggerState" sortable>
         </el-table-column>
 
-
         <el-table-column label="Detail" width="70">
           <template slot-scope="scope">
             <el-button type="info"
@@ -70,7 +64,6 @@
                        circle></el-button>
           </template>
         </el-table-column>
-
       </el-table>
     </div>
 
@@ -88,14 +81,11 @@
       </el-dialog>
     </template>
   </div>
-
-
-
 </template>
 
 <script>
-  import TriggerAdapter from '../adapter/triggerAdapter';
 
+  import TriggerAdapter from '../adapter/triggerAdapter';
   import TriggerDetail from './TriggerDetail';
 
   export default {
