@@ -1,5 +1,16 @@
 <template>
   <div>
+    <div class="btn_area">
+      <el-tag  type="info">Trigger List</el-tag>
+
+      <el-button style="margin-left: 20px" type="primary"
+                 title="refresh"
+                 plain
+                 icon="el-icon-refresh"
+                 size="mini"
+                 @click="setTriggerList()"></el-button>
+    </div>
+
     <div>
       <el-table :data="triggerList" style="width: 100%" size="mini">
 
@@ -188,5 +199,9 @@
 </script>
 
 <style scoped>
-
+  .btn_area{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  }
 </style>

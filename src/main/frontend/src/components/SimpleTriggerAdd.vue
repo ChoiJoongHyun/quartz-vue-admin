@@ -165,7 +165,10 @@
           type: 'info'
         }).then(() => {
           SimpleTriggerAdapter.postSimpleTrigger(this.jobId, this.simpleTriggerForm).then((res) => {
-            alert("success");
+            this.$message({
+              message: 'add simple trigger success',
+              type: 'success'
+            });
             this.$emit('submit');
           });
 

@@ -22,10 +22,7 @@
             <p>Description : {{ props.row.description }}</p>
             <p style="margin-bottom: 20px">JobClassName : {{ props.row.jobClassName }}</p>
 
-            <el-tag type="info">Trigger List</el-tag>
-
-            <TriggerList :jobId="props.row.id">
-            </TriggerList>
+            <TriggerList ref="triggerList" :jobId="props.row.id"></TriggerList>
           </div>
         </template>
       </el-table-column>
@@ -207,9 +204,8 @@
       },
 
       submitSimpleTriggerForm() {
-        alert("submitSimpleTriggerForm");
-        this.selectedJobId = {};
-        this.addSimpleTriggerDialogVisible = false;
+        this.cancelDialog();
+        this.$refs.triggerList.setTriggerList();
       }
     },
 
