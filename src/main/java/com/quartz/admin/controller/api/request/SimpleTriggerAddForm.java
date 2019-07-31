@@ -24,6 +24,8 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -52,21 +54,17 @@ public class SimpleTriggerAddForm {
         private String key;
         private String value;
 
-        public boolean isEmpty() {
-            return StringUtils.isEmpty(this.key) || StringUtils.isEmpty(this.value);
+        boolean isValid() {
+            return ! StringUtils.isEmpty(this.key) && ! StringUtils.isEmpty(this.value);
         }
     }
 
     private JobDataMap getJobDataMap() {
-        JobDataMap jobDataMap = new JobDataMap();
+        Map<String, String> jobDataMap = this.jobDataList.stream()
+                .filter(JobData::isValid)
+                .collect(Collectors.toMap(JobData::getKey, JobData::getValue));
 
-        for(JobData jobData : this.jobDataList) {
-            if(! jobData.isEmpty()) {
-                jobDataMap.put(jobData.getKey(), jobData.getValue());
-            }
-        }
-
-        return jobDataMap;
+        return new JobDataMap(jobDataMap);
     }
 
     public QuartzSimpleTriggers toQuartzSimpleTriggers(JobId jobId) {
