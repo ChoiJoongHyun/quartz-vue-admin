@@ -61,6 +61,10 @@
       <el-form-item label="Description">
         <el-input type="textarea" v-model="trigger.description" disabled></el-input>
       </el-form-item>
+
+      <el-form-item label="JobData">
+        <pre>{{trigger.jobData}}</pre>
+      </el-form-item>
     </el-form>
   </div>
 </template>
