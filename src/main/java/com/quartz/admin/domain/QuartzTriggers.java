@@ -3,7 +3,7 @@
  */
 package com.quartz.admin.domain;
 
-import com.quartz.admin.domain.converter.JobDataMapConverter;
+import com.quartz.admin.domain.converter.JobDataMapDomainConverter;
 import com.quartz.admin.enums.TriggerState;
 import com.quartz.admin.enums.TriggerType;
 import lombok.*;
@@ -63,7 +63,7 @@ public class QuartzTriggers implements Serializable {
     @Column(name = "MISFIRE_INSTR")
     private Integer misfireInstr;
 
-    @Convert(converter = JobDataMapConverter.class)
+    @Convert(converter = JobDataMapDomainConverter.class)
     @Column(name = "JOB_DATA")
     @Lob
     private JobDataMap jobData;

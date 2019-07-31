@@ -13,7 +13,7 @@ import java.io.*;
 
 @Slf4j
 @Converter
-public class JobDataMapConverter implements AttributeConverter<JobDataMap, byte[]> {
+public class JobDataMapDomainConverter implements AttributeConverter<JobDataMap, byte[]> {
 
     @Override
     public byte[] convertToDatabaseColumn(JobDataMap attribute) {

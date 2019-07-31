@@ -3,7 +3,7 @@
  */
 package com.quartz.admin.domain;
 
-import com.quartz.admin.domain.converter.JobDataMapConverter;
+import com.quartz.admin.domain.converter.JobDataMapDomainConverter;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobDataMap;
@@ -41,7 +41,7 @@ public class QuartzJobDetails implements Serializable {
     @Column(name = "REQUESTS_RECOVERY", nullable = false)
     private boolean requestsRecovery;
 
-    @Convert(converter = JobDataMapConverter.class)
+    @Convert(converter = JobDataMapDomainConverter.class)
     @Column(name = "JOB_DATA")
     @Lob
     private JobDataMap jobData;
