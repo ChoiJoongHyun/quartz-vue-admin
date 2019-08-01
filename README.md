@@ -29,11 +29,6 @@ npm run build
 npm run test
 ```
 
-#### Lints and fixes files
-```
-npm run lint
-```
-
 #### Java Spring Boot Application run
 
 - profile local
