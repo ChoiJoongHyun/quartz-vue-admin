@@ -43,6 +43,10 @@ npm run lint
 
 ## preview
 
+- preview
+
 ![](preview.gif)
+
+- add-simple-trigger
 
 ![](add-simple-trigger.gif)
