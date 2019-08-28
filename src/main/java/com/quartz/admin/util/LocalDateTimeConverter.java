@@ -16,8 +16,8 @@ public class LocalDateTimeConverter {
     }
 
     public static Long toLongDefaultNow(LocalDateTime localDateTime) {
-        return localDateTime == null ?
-                LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() :
-                localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        return localDateTime == null
+                ? LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+                : localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 }
