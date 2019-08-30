@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.1.6.RELEASE'
     id 'java'
+    id "com.moowork.node" version "1.3.1"
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -23,6 +24,21 @@ repositories {
     mavenCentral()
 }
 
+node {
+    // Version of node to use.
+    version = '8.11.3'
+
+    // Base URL for fetching node distributions (change if you have a mirror).
+    distBaseUrl = 'https://nodejs.org/dist'
+
+    // If true, it will download node using above parameters.
+    // If false, it will try to use globally installed node.
+    download = true
+
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file('src/main/frontend')
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -38,3 +54,9 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 
 }
+
+//npmInstallThenBuild task. npm install and npm run build execute.
+task npmInstallThenBuild(dependsOn: [npmInstall, npm_run_build])
+
+//execute npmInstallThenBuild before processResources
+processResources.dependsOn npmInstallThenBuild
