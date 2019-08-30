@@ -7,7 +7,13 @@
 - npm >=5.6.0
 - node >= 8.11.3
 - jdk 1.8
-## Project setup
+
+## Project Build
+```
+./gradlew bootJar
+```
+
+## Project Setup
 
 - frontend root : src/main/frontend
 ```
